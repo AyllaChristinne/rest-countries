@@ -1,0 +1,19 @@
+body {
+    background: var(--color-background-light);
+}
+
+.countries-cards {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 0 50px;
+}
+
+
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+    .countries-cards {
+        padding: 20px;
+    }
+}
