@@ -1,26 +1,72 @@
-import searchIcon from '../../assets/icons/search.png';
-import './SortOptions.css';
+import { Dispatch, useState } from "react";
+import searchIcon from "../../assets/icons/search.png";
+import { CountryType } from "../../types";
+import { getCountriesByRegion, getCountryByName } from "../../services";
+import "./SortOptions.css";
 
-export default function SortOptions() {
-  return(
+type SortOptionsProps = {
+  setCountries: Dispatch<React.SetStateAction<CountryType[]>>;
+  setLoading: Dispatch<React.SetStateAction<boolean>>;
+};
+
+export default function SortOptions({
+  setCountries,
+  setLoading,
+}: SortOptionsProps) {
+  const [searchValue, setSearchValue] = useState<string>("");
+
+  const handleInputChange = async (search: string) => {
+    let c = await getCountryByName(search);
+    setCountries(c);
+    setLoading(false);
+  };
+
+  const handleRegionChange = async (region: string) => {
+    setLoading(true);
+    let c = await getCountriesByRegion(region);
+    setCountries(c);
+    setLoading(false);
+  };
+
+  return (
     <div className="sort-options">
       <div className="search-input-div">
-        <img className="search-icon" src={searchIcon} alt="Search pictogram"></img>
-        <input 
-          type="search" 
-          className="search-input" 
-          name="search" 
+        <img
+          className="search-icon"
+          src={searchIcon}
+          alt="Search pictogram"
+        ></img>
+        <input
+          type="search"
+          className="search-input"
+          name="search"
           placeholder="Search for a country..."
-          
+          value={searchValue}
+          onChange={(e) => {
+            setSearchValue(e.target.value);
+            window.setTimeout(() => {
+              setLoading(true);
+              handleInputChange(e.target.value);
+            }, 1000);
+          }}
         />
       </div>
-      <select className="region-select">
-        <option disabled selected>Filter by region</option>
-        <option>Africa</option>
-        <option>America</option>
-        <option>Asia</option>
-        <option>Europe</option>
-        <option>Oceania</option>
+
+      <select
+        className="region-select"
+        defaultValue="default"
+        onChange={(e) => {
+          handleRegionChange(e.target.value);
+        }}
+      >
+        <option value="default" disabled>
+          Filter by region
+        </option>
+        <option value="africa">Africa</option>
+        <option value="americas">America</option>
+        <option value="asia">Asia</option>
+        <option value="europe">Europe</option>
+        <option value="oceania">Oceania</option>
       </select>
     </div>
   );

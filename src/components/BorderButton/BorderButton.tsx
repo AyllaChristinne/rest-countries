@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import Loading from 'react-loading';
 import { Link } from 'react-router-dom';
+import { LoadingOverlay } from '../LoadingOverlay/LoadingOverlay';
 import { getBordersInfo } from '../../services';
 import './BorderButton.css';
 
@@ -11,24 +11,35 @@ export type BorderType = {
 export default function BorderButton({ borderCodes }: BorderType) {
   const [borderCountries, setBorderCountries] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [hasNoBorders, sethasNoBorders] = useState<boolean>(false);
 
  async function fetchBorderCountries() {
-    const countries = await getBordersInfo(borderCodes);
-    setBorderCountries(countries);
+    if(borderCodes) {
+      const countries = await getBordersInfo(borderCodes);
+      setBorderCountries(countries);
+    } else {
+      sethasNoBorders(true);
+    }
     setLoading(false);
   }
 
   useEffect(() => {
     fetchBorderCountries();
+
+    return () => {
+      sethasNoBorders(false);
+    }
   }, []);
   
   return (
     <div className="country-borders">
       <p className="country-borders-title">Border Countries:</p>
       {loading ? (
-        <Loading type="spin" color="" className="loading-spinner-small" /> 
+        <LoadingOverlay />
+      ) : hasNoBorders ? (
+        <span className="country-borders-none">This country has no borders.</span>
       ) : (
-        <div  className="country-borders-buttons">
+        <div className="country-borders-buttons">
           {borderCountries.map((country) => (
             <Link 
               to={`${country.name}`} 
