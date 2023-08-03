@@ -1,0 +1,37 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "sourceType": "module",
+    "ecmaVersion": 10
+  },
+  "plugins": ["@typescript-eslint", "react", "import"],
+  "rules": {
+    // Disabling ESLint rules as it can report incorrect errors (we're using TypeScript-ESLint plugin)
+    "camelcase": "off",
+    "no-magic-numbers": "off",
+
+    "eqeqeq": ["error", "smart"],
+    "no-console": [
+      "warn",
+      {
+        "allow": ["warn", "error"]
+      }
+    ],
+    "no-var": "error",
+    "no-trailing-spaces": "error",
+    "import/no-cycle": "warn",
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"],
+    "react/react-in-jsx-scope": "off"
+  }
+}
