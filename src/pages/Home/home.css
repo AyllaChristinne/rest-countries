@@ -1,5 +1,5 @@
 body {
-    background: var(--color-background-light);
+    background-color: var(--color-background);
 }
 
 .countries-cards {
