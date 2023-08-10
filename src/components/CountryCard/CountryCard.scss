@@ -1,0 +1,48 @@
+@import "../../styles/mixins.scss";
+
+.country-card {
+  background: var(--color-elements);
+  border-radius: 0.4rem;
+  width: 350px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 6px 8px 0 rgba(0, 0, 0, 0.08);
+}
+
+.country-card > img {
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+  border-top-left-radius: 0.4rem;
+  border-top-right-radius: 0.4rem;
+}
+
+.country-info {
+  padding: 15px 20px;
+}
+
+.country-name {
+  color: var(--color-text);
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.country-pop,
+.country-region,
+.country-capital {
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 600;
+  height: 1.4rem;
+}
+
+.country-pop > span,
+.country-region > span,
+.country-capital > span {
+  font-weight: 300;
+}
+
+@include media("LG") {
+  .country-card > img {
+    height: 200px;
+  }
+}

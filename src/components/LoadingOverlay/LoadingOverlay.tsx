@@ -1,10 +1,10 @@
 import Loading from "react-loading";
-import "./LoadingOverlay.css";
+import "./LoadingOverlay.scss";
 
 export const LoadingOverlay = () => {
-  return(
+  return (
     <div className="loading-container">
-      <Loading type="bubbles" color="#111517" className="loading-icon" /> 
+      <Loading type="bubbles" color="#111517" className="loading-icon" />
     </div>
-  )
-}
+  );
+};

@@ -2,7 +2,7 @@ import { Dispatch, useState } from "react";
 import searchIcon from "../../assets/icons/search.png";
 import { CountryType } from "../../types";
 import { getCountriesByRegion, getCountryByName } from "../../services";
-import "./SortOptions.css";
+import "./SortOptions.scss";
 
 type SortOptionsProps = {
   setCountries: Dispatch<React.SetStateAction<CountryType[]>>;
@@ -16,14 +16,14 @@ export default function SortOptions({
   const [searchValue, setSearchValue] = useState<string>("");
 
   const handleInputChange = async (search: string) => {
-    let c = await getCountryByName(search);
+    const c = await getCountryByName(search);
     setCountries(c);
     setLoading(false);
   };
 
   const handleRegionChange = async (region: string) => {
     setLoading(true);
-    let c = await getCountriesByRegion(region);
+    const c = await getCountriesByRegion(region);
     setCountries(c);
     setLoading(false);
   };

@@ -1,3 +1,5 @@
+@import "../../styles/mixins.scss";
+
 .details-container {
   max-width: 1280px;
   margin: 0 auto;
@@ -7,7 +9,9 @@
   padding: 32px;
 }
 
-.details-country, .details-country-infos, .details-country-info {
+.details-country,
+.details-country-infos,
+.details-country-info {
   display: flex;
   flex-direction: column;
   gap: 36px;
@@ -43,31 +47,32 @@
   font-weight: 400;
 }
 
-@media screen and (min-width: 1180px) {
-.details-container {
-  padding: 48px;
-}
+@include media("LG") {
+  .details-container {
+    padding: 48px;
+  }
 
-  .details-country { 
+  .details-country {
     display: flex;
     flex-direction: row;
     gap: 80px;
   }
 
-  .details-country-infos { 
+  .details-country-infos {
     display: flex;
     flex-direction: column;
     gap: 24px;
     max-width: 700px;
   }
 
-  .details-country-info { 
+  .details-country-info {
     display: flex;
     flex-direction: row;
     gap: 16px;
   }
 
-  .details-country-info-1, .details-country-info-2 {
+  .details-country-info-1,
+  .details-country-info-2 {
     width: 50%;
   }
 }

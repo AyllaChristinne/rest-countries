@@ -14,7 +14,7 @@
     "sourceType": "module",
     "ecmaVersion": 10
   },
-  "plugins": ["@typescript-eslint", "react", "import"],
+  "plugins": ["@typescript-eslint", "react", "import", "unused-imports"],
   "rules": {
     // Disabling ESLint rules as it can report incorrect errors (we're using TypeScript-ESLint plugin)
     "camelcase": "off",
@@ -32,6 +32,18 @@
     "import/no-cycle": "warn",
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": "off"
   }
 }

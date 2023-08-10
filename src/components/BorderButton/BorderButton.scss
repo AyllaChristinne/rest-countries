@@ -1,3 +1,5 @@
+@import "../../styles//mixins.scss";
+
 .country-borders-title {
   font-size: 18px;
   font-weight: 600;
@@ -17,6 +19,7 @@
   font-size: 14px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1), 0 0 12px 0 rgba(0, 0, 0, 0.08);
   border-radius: 2px;
+  cursor: pointer;
 }
 
 .country-borders-none {
@@ -24,8 +27,8 @@
   font-weight: 400;
 }
 
-@media screen and (min-width: 1180px) {
-  .country-borders { 
+@include media("LG") {
+  .country-borders {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -35,5 +38,4 @@
     margin: 0;
     min-width: fit-content;
   }
-
 }

@@ -1,20 +1,21 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { LoadingOverlay } from '../LoadingOverlay/LoadingOverlay';
-import { getBordersInfo } from '../../services';
-import './BorderButton.css';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { LoadingOverlay } from "../LoadingOverlay/LoadingOverlay";
+import { getBordersInfo } from "../../services";
+import "./BorderButton.scss";
+import { CountryType } from "../../types";
 
 export type BorderType = {
-  borderCodes: string[]
+  borderCodes: string[];
 };
 
 export default function BorderButton({ borderCodes }: BorderType) {
-  const [borderCountries, setBorderCountries] = useState<any[]>([]);
+  const [borderCountries, setBorderCountries] = useState([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [hasNoBorders, sethasNoBorders] = useState<boolean>(false);
 
- async function fetchBorderCountries() {
-    if(borderCodes) {
+  async function fetchBorderCountries() {
+    if (borderCodes) {
       const countries = await getBordersInfo(borderCodes);
       setBorderCountries(countries);
     } else {
@@ -28,21 +29,23 @@ export default function BorderButton({ borderCodes }: BorderType) {
 
     return () => {
       sethasNoBorders(false);
-    }
+    };
   }, []);
-  
+
   return (
     <div className="country-borders">
       <p className="country-borders-title">Border Countries:</p>
       {loading ? (
         <LoadingOverlay />
       ) : hasNoBorders ? (
-        <span className="country-borders-none">This country has no borders.</span>
+        <span className="country-borders-none">
+          This country has no borders.
+        </span>
       ) : (
         <div className="country-borders-buttons">
-          {borderCountries.map((country) => (
-            <Link 
-              to={`${country.name}`} 
+          {borderCountries.map((country: CountryType) => (
+            <Link
+              to={`${country.name}`}
               key={country.alpha3Code}
               className="country-borders-button"
             >

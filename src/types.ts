@@ -1,20 +1,20 @@
 export type BorderCountryType = {
   name: string;
   alpha3Code: string;
-}
+};
 export type CountryCardProps = {
   flag: string;
   name: string;
   pop: number;
   region: string;
   capital: string;
-}
+};
 
 export type CurrenciesType = {
   code: string;
   name: string;
   symbol: string;
-}
+};
 
 export type LanguagesType = {
   iso639_1: string;
@@ -35,5 +35,5 @@ export type CountryType = {
   currencies: Array<CurrenciesType>;
   languages: Array<LanguagesType>;
   borders: Array<string>;
-}
-
+  alpha3Code: string;
+};

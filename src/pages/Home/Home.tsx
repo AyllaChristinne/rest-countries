@@ -6,7 +6,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import SortOptions from "../../components/SortOptions/SortOptions";
 import { CountryType } from "../../types";
 import { LoadingOverlay } from "../../components/LoadingOverlay/LoadingOverlay";
-import "./home.css";
+import "./Home.scss";
 
 function Home() {
   const [countries, setCountries] = useState<Array<CountryType>>([]);
