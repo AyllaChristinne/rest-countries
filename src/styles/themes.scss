@@ -5,7 +5,7 @@
   --color-input: hsl(0, 0%, 52%);
 }
 
-[data-theme*="theme-dark"] {
+[data-theme="dark"] {
   --color-text: hsl(0, 0%, 100%);
   --color-elements: hsl(209, 23%, 22%);
   --color-background: hsl(207, 26%, 17%);
