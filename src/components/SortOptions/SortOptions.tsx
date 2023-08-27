@@ -1,8 +1,8 @@
 import { Dispatch, useState } from "react";
-import searchIcon from "../../assets/icons/search.png";
 import { CountryType } from "../../types";
 import { getCountriesByRegion, getCountryByName } from "../../services";
 import "./SortOptions.scss";
+import { SearchIcon } from "../../assets/icons/SearchIcon";
 
 type SortOptionsProps = {
   setCountries: Dispatch<React.SetStateAction<CountryType[]>>;
@@ -31,16 +31,13 @@ export default function SortOptions({
   return (
     <div className="sort-options">
       <div className="search-input-div">
-        <img
-          className="search-icon"
-          src={searchIcon}
-          alt="Search pictogram"
-        ></img>
+        <SearchIcon classNames="search-icon" />
         <input
           type="search"
           className="search-input"
           name="search"
           placeholder="Search for a country..."
+          autoComplete="off"
           value={searchValue}
           onChange={(e) => {
             setSearchValue(e.target.value);

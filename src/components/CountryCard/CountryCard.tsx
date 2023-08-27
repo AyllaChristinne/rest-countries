@@ -1,6 +1,6 @@
 import React from "react";
 import { CountryCardProps } from "../../types";
-import { formatPopulation } from "../../utils/formatPopulation";
+import { formatPopulation } from "../../functions/formatPopulation";
 import "./CountryCard.scss";
 
 const CountryCard: React.FC<CountryCardProps> = ({

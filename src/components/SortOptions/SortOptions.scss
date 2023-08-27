@@ -2,14 +2,13 @@
   display: flex;
   flex-direction: column;
   gap: 48px;
-  margin: 28px 12px;
 }
 
 .search-input-div {
   padding: 0 2rem;
   border-radius: 0.3rem;
   height: 3rem;
-  
+
   display: flex;
   align-items: center;
   gap: 18px;
@@ -34,7 +33,8 @@
   font-weight: 600;
 }
 
-.search-input-div, .region-select {
+.search-input-div,
+.region-select {
   background: var(--color-elements);
   box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.08);
 
@@ -54,4 +54,4 @@
 .region-select:hover {
   outline: none;
   border: none;
-} 
+}

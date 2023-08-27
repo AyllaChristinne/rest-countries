@@ -2,11 +2,11 @@ import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllCountries } from "../../services";
 import CountryCard from "../../components/CountryCard/CountryCard";
-import Navbar from "../../components/Navbar/Navbar";
 import SortOptions from "../../components/SortOptions/SortOptions";
 import { CountryType } from "../../types";
 import { LoadingOverlay } from "../../components/LoadingOverlay/LoadingOverlay";
 import "./Home.scss";
+import Container from "../../components/Container/Container";
 
 function Home() {
   const [countries, setCountries] = useState<Array<CountryType>>([]);
@@ -23,8 +23,7 @@ function Home() {
   }, []);
 
   return (
-    <div className={`home-container ${localStorage.getItem("theme")}`}>
-      <Navbar />
+    <Container>
       {loading ? (
         <LoadingOverlay />
       ) : (
@@ -51,7 +50,7 @@ function Home() {
           </div>
         </>
       )}
-    </div>
+    </Container>
   );
 }
 

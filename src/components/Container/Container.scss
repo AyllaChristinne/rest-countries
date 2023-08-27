@@ -1,0 +1,40 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.container {
+  width: 100%;
+  height: 100%;
+  margin-top: 64px;
+  background-color: var(--color-background);
+}
+
+.grid {
+  width: 100%;
+  margin: 0 auto;
+  padding: $size-lg;
+}
+
+@include media("SM") {
+  .grid {
+    padding: $size-lg;
+  }
+}
+
+@include media("MD") {
+  .grid {
+    padding: $size-xl;
+  }
+}
+
+@include media("LG") {
+  .grid {
+    padding: $size-xxl;
+  }
+}
+
+@include media("XL") {
+  .grid {
+    padding: $size-xxl 0;
+    max-width: 1366px;
+  }
+}

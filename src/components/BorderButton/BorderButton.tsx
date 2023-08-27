@@ -12,14 +12,14 @@ export type BorderType = {
 export default function BorderButton({ borderCodes }: BorderType) {
   const [borderCountries, setBorderCountries] = useState([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [hasNoBorders, sethasNoBorders] = useState<boolean>(false);
+  const [hasNoBorders, setHasNoBorders] = useState<boolean>(false);
 
   async function fetchBorderCountries() {
     if (borderCodes) {
       const countries = await getBordersInfo(borderCodes);
       setBorderCountries(countries);
     } else {
-      sethasNoBorders(true);
+      setHasNoBorders(true);
     }
     setLoading(false);
   }
@@ -28,7 +28,7 @@ export default function BorderButton({ borderCodes }: BorderType) {
     fetchBorderCountries();
 
     return () => {
-      sethasNoBorders(false);
+      setHasNoBorders(false);
     };
   }, []);
 
@@ -45,7 +45,7 @@ export default function BorderButton({ borderCodes }: BorderType) {
         <div className="country-borders-buttons">
           {borderCountries.map((country: CountryType) => (
             <Link
-              to={`${country.name}`}
+              to={`/${country.name}`}
               key={country.alpha3Code}
               className="country-borders-button"
             >

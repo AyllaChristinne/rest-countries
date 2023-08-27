@@ -1,12 +1,12 @@
 @import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
 
 .details-container {
-  max-width: 1280px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 48px;
-  padding: 32px;
+  color: var(--color-text);
+  height: calc(100vh - 112px);
 }
 
 .details-country,
@@ -19,13 +19,23 @@
 
 .details-country-back {
   width: 100px;
-  padding: 6px 16px;
-  background-color: var(--color-elements);
-  color: var(--color-text);
+  padding: 6px $size-lg;
   font-size: 14px;
+  color: var(--color-text);
+  background-color: var(--color-elements);
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1), 0 0 14px 0 rgba(0, 0, 0, 0.08);
-  border-radius: 2px;
+  border-radius: 4px;
   border: none;
+  cursor: pointer;
+  display: flex;
+  gap: $size-sm;
+  align-items: center;
+  justify-content: center;
+}
+
+.details-country-back-icon {
+  width: 16px;
+  height: 18px;
 }
 
 .details-country-img {
@@ -39,6 +49,7 @@
 
 .details-country-text {
   font-size: 16px;
+  line-height: 1.5;
   font-weight: 600;
   margin-bottom: 0.6rem;
 }

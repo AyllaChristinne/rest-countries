@@ -1,35 +1,84 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
 .navbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 100vw;
+  width: 100%;
   height: 64px;
+  box-sizing: border-box;
   background: var(--color-elements);
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1), 0 0 6px 0 rgba(0, 0, 0, 0.08);
-  padding: 0 20px 0 14px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.navbar-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin: 0 auto;
+  padding: 0 $size-xl;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: space-between;
 }
 
 .navbar-text {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 800;
   cursor: pointer;
+  color: var(--color-text);
 }
 
 .darkMode-btn {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $size-sm;
   outline: none;
   border: none;
-  gap: 8px;
   background-color: transparent;
+  color: var(--color-text);
   cursor: pointer;
-}
-
-.darkMode-icon {
-  width: 14px;
 }
 
 .darkMode-text {
   font-weight: 600;
-  font-size: 12px;
+  font-size: 14px;
+}
+
+.darkMode-icon {
+  width: 20px;
+  height: 20px;
+}
+
+@include media("SM") {
+  .navbar-content {
+    padding: 0 $size-lg;
+  }
+}
+
+@include media("MD") {
+  .navbar-content {
+    padding: 0 $size-xl;
+  }
+}
+
+@include media("LG") {
+  .navbar-content {
+    padding: 0 $size-xxl;
+  }
+}
+
+@include media("XL") {
+  .navbar-content {
+    max-width: 1366px;
+  }
+}
+
+@include media("XL") {
+  .navbar-content {
+    padding: 0;
+    max-width: 1366px;
+  }
 }
