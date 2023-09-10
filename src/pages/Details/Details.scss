@@ -1,12 +1,10 @@
 @import "../../styles/mixins.scss";
 @import "../../styles/variables.scss";
 
-.details-container {
+.details-content {
   display: flex;
   flex-direction: column;
   gap: 48px;
-  color: var(--color-text);
-  height: calc(100vh - 112px);
 }
 
 .details-country,
@@ -17,11 +15,15 @@
   gap: 36px;
 }
 
+.details-country {
+  align-items: center;
+  justify-content: center;
+}
+
 .details-country-back {
   width: 100px;
   padding: 6px $size-lg;
   font-size: 14px;
-  color: var(--color-text);
   background-color: var(--color-elements);
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1), 0 0 14px 0 rgba(0, 0, 0, 0.08);
   border-radius: 4px;

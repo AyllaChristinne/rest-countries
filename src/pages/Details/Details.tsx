@@ -23,7 +23,7 @@ export default function Details() {
 
   useEffect(() => {
     getCountryInfo();
-  }, [getCountryByName, country]);
+  }, [getCountryByName]);
 
   useEffect(() => {
     if (country !== undefined) {
@@ -33,7 +33,7 @@ export default function Details() {
 
   return (
     <Container>
-      <div className={"details-container"}>
+      <div className="details-content">
         <button
           type="button"
           onClick={() => navigate(-1)}

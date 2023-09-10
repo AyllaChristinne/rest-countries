@@ -2,11 +2,16 @@
 
 * {
   margin: 0;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   text-decoration: none;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+  color: var(--color-text);
+
   transition: background-color 0.8s;
+}
+
+:root {
+  width: 100%;
 }
