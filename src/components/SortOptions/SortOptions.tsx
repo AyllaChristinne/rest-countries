@@ -1,4 +1,4 @@
-import { Dispatch, useState } from "react";
+import { Dispatch, useEffect, useState } from "react";
 import { CountryType } from "../../types";
 import { getCountriesByRegion, getCountryByName } from "../../services";
 import "./SortOptions.scss";
@@ -14,11 +14,33 @@ export default function SortOptions({
   setLoading,
 }: SortOptionsProps) {
   const [searchValue, setSearchValue] = useState<string>("");
+  const [debouncedSearch, setDebouncedSearch] = useState<string>("");
 
-  const handleInputChange = async (search: string) => {
-    const c = await getCountryByName(search);
-    setCountries(c);
-    setLoading(false);
+  useEffect(() => {
+    const delaySearch = setTimeout(() => {
+      setDebouncedSearch(searchValue);
+    }, 1000);
+
+    return () => {
+      clearTimeout(delaySearch);
+    };
+  }, [searchValue]);
+
+  useEffect(() => {
+    const debouncedInputSearch = async () => {
+      if (debouncedSearch) {
+        setLoading(true);
+        const c = await getCountryByName(debouncedSearch);
+        setCountries(c);
+        setLoading(false);
+      }
+    };
+
+    debouncedInputSearch();
+  }, [debouncedSearch, setCountries, setLoading]);
+
+  const handleInputChange = (search: string) => {
+    setSearchValue(search);
   };
 
   const handleRegionChange = async (region: string) => {
@@ -40,11 +62,7 @@ export default function SortOptions({
           autoComplete="off"
           value={searchValue}
           onChange={(e) => {
-            setSearchValue(e.target.value);
-            window.setTimeout(() => {
-              setLoading(true);
-              handleInputChange(e.target.value);
-            }, 1000);
+            handleInputChange(e.target.value);
           }}
         />
       </div>

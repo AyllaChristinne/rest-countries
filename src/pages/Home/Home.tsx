@@ -24,29 +24,30 @@ function Home() {
 
   return (
     <Container>
+      <SortOptions setCountries={setCountries} setLoading={setLoading} />
       {loading ? (
         <LoadingOverlay />
       ) : (
         <>
-          <SortOptions setCountries={setCountries} setLoading={setLoading} />
           <div className="countries-cards">
-            {countries.map((country: CountryType) => {
-              return (
-                <Link
-                  to={`${country.name}`}
-                  key={country.name}
-                  state={{ name: country.name }}
-                >
-                  <CountryCard
-                    flag={country.flag}
-                    name={country.name}
-                    pop={country.population}
-                    region={country.region}
-                    capital={country.capital}
-                  />
-                </Link>
-              );
-            })}
+            {countries &&
+              countries.map((country: CountryType) => {
+                return (
+                  <Link
+                    to={`${country.name}`}
+                    key={country.name}
+                    state={{ name: country.name }}
+                  >
+                    <CountryCard
+                      flag={country.flag}
+                      name={country.name}
+                      pop={country.population}
+                      region={country.region}
+                      capital={country.capital}
+                    />
+                  </Link>
+                );
+              })}
           </div>
         </>
       )}
