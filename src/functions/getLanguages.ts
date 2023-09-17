@@ -3,9 +3,13 @@ import { LanguagesType } from "../types";
 export const getLanguages = (languages: Array<LanguagesType>) => {
   let formattedLang = "";
 
-  languages.map((language) => {
-    return (formattedLang += language.name + ",");
+  languages.forEach((currency, index) => {
+    formattedLang += currency.name;
+
+    if (index < languages.length - 1) {
+      formattedLang += ", ";
+    }
   });
 
-  return formattedLang.substring(0, formattedLang.length - 1);
+  return formattedLang;
 };

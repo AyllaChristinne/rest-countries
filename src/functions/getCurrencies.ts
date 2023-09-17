@@ -1,11 +1,15 @@
 import { CurrenciesType } from "../types";
 
 export const getCurrencies = (currencies: Array<CurrenciesType>) => {
-  let formattedCurr = "";
+  let formattedCur = "";
 
-  currencies.map((currency) => {
-    return (formattedCurr += currency.name + ", ");
+  currencies.forEach((currency, index) => {
+    formattedCur += currency.name;
+
+    if (index < currencies.length - 1) {
+      formattedCur += ", ";
+    }
   });
 
-  return formattedCurr.substring(0, formattedCurr.length - 1);
+  return formattedCur;
 };
