@@ -10,11 +10,14 @@ import "./Details.scss";
 import { LoadingOverlay } from "../../components/LoadingOverlay/LoadingOverlay";
 import { BackIcon } from "../../assets/icons/BackIcon";
 import Container from "../../components/Container/Container";
+import { useError } from "../../context/errorContext";
+import { NotFound } from "../../components/NotFound/NotFound";
 
 export default function Details() {
   const [country, setCountry] = useState<CountryType[]>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const navigate = useNavigate();
+  const { isError } = useError();
 
   const getCountryInfo = useCallback(async () => {
     const c = await getCountryByName(window.location.pathname.replace("/", ""));
@@ -45,6 +48,8 @@ export default function Details() {
 
         {isLoading ? (
           <LoadingOverlay />
+        ) : isError ? (
+          <NotFound />
         ) : (
           country && (
             <div className="details-country">

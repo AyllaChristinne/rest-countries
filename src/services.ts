@@ -5,7 +5,9 @@ export async function getAllCountries() {
     .then((res) => {
       return res.json();
     })
-    .catch((err) => console.error("GET All Countries Error: ", err));
+    .catch((err) => {
+      console.error("GET All Countries Error: ", err);
+    });
 }
 
 export async function getCountryByName(name: string) {
@@ -16,7 +18,9 @@ export async function getCountryByName(name: string) {
     .then((data) => {
       return data;
     })
-    .catch((err) => console.error("GET Country Error: ", err));
+    .catch((err) => {
+      console.error("GET Country Error: ", err);
+    });
 }
 
 export async function getBordersInfo(borders: string[]) {
@@ -26,7 +30,9 @@ export async function getBordersInfo(borders: string[]) {
     .then((res) => {
       return res.json();
     })
-    .catch((err) => console.error("GET Border Countries Error: ", err));
+    .catch((err) => {
+      console.error("GET Border Countries Error: ", err);
+    });
 }
 
 export async function getCountriesByRegion(region: string) {
@@ -34,5 +40,7 @@ export async function getCountriesByRegion(region: string) {
     .then((res) => {
       return res.json();
     })
-    .catch((err) => console.error("GET Countries By Region Error: ", err));
+    .catch((err) => {
+      console.error("GET Countries By Region Error: ", err);
+    });
 }
