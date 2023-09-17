@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { LoadingOverlay } from "../LoadingOverlay/LoadingOverlay";
-import { getBordersInfo } from "../../services";
+import { getBorders } from "../../services/getBorders";
 import "./BorderButton.scss";
 import { CountryType } from "../../types";
+import { useAppContext } from "../../context/appContext";
 
 export type BorderType = {
   borderCodes: string[];
@@ -11,20 +12,21 @@ export type BorderType = {
 
 export default function BorderButton({ borderCodes }: BorderType) {
   const [borderCountries, setBorderCountries] = useState([]);
-  const [loading, setLoading] = useState<boolean>(true);
   const [hasNoBorders, setHasNoBorders] = useState<boolean>(false);
+  const { isLoading, setIsLoading } = useAppContext();
 
   async function fetchBorderCountries() {
     if (borderCodes) {
-      const countries = await getBordersInfo(borderCodes);
+      const countries = await getBorders(borderCodes);
       setBorderCountries(countries);
     } else {
       setHasNoBorders(true);
     }
-    setLoading(false);
+    setIsLoading(false);
   }
 
   useEffect(() => {
+    setIsLoading(true);
     fetchBorderCountries();
 
     return () => {
@@ -35,7 +37,7 @@ export default function BorderButton({ borderCodes }: BorderType) {
   return (
     <div className="country-borders">
       <p className="country-borders-title">Border Countries:</p>
-      {loading ? (
+      {isLoading ? (
         <LoadingOverlay />
       ) : hasNoBorders ? (
         <span className="country-borders-none">

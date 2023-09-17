@@ -1,27 +1,30 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BorderButton from "../../components/BorderButton/BorderButton";
-import { getCountryByName } from "../../services";
+import { getCountryByName } from "../../services/getCountryByName";
 import { CountryType } from "../../types";
 import { formatPopulation } from "../../functions/formatPopulation";
 import { getCurrencies } from "../../functions/getCurrencies";
 import { getLanguages } from "../../functions/getLanguages";
-import "./Details.scss";
 import { LoadingOverlay } from "../../components/LoadingOverlay/LoadingOverlay";
 import { BackIcon } from "../../assets/icons/BackIcon";
 import Container from "../../components/Container/Container";
-import { useError } from "../../context/errorContext";
+import { useAppContext } from "../../context/appContext";
 import { NotFound } from "../../components/NotFound/NotFound";
+import "./Details.scss";
 
 export default function Details() {
   const [country, setCountry] = useState<CountryType[]>();
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const navigate = useNavigate();
-  const { isError } = useError();
+  const { isError, isLoading, setIsLoading } = useAppContext();
 
   const getCountryInfo = useCallback(async () => {
     const c = await getCountryByName(window.location.pathname.replace("/", ""));
     setCountry(c);
+  }, []);
+
+  useEffect(() => {
+    setIsLoading(true);
   }, []);
 
   useEffect(() => {
@@ -56,6 +59,7 @@ export default function Details() {
               <img
                 src={country[0].flag}
                 alt={`Bandeira de ${country[0].name}`}
+                aria-label={`Bandeira de ${country[0].name}`}
                 className="details-country-img"
               />
               <div className="details-country-infos">

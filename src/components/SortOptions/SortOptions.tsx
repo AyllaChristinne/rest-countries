@@ -1,20 +1,14 @@
-import { Dispatch, useEffect, useState } from "react";
-import { CountryType } from "../../types";
-import { getCountriesByRegion, getCountryByName } from "../../services";
+import { useEffect, useState } from "react";
+import { getCountriesByRegion } from "../../services/getCountriesByRegion";
 import "./SortOptions.scss";
 import { SearchIcon } from "../../assets/icons/SearchIcon";
+import { getCountryByName } from "../../services/getCountryByName";
+import { useAppContext } from "../../context/appContext";
 
-type SortOptionsProps = {
-  setCountries: Dispatch<React.SetStateAction<CountryType[]>>;
-  setLoading: Dispatch<React.SetStateAction<boolean>>;
-};
-
-export default function SortOptions({
-  setCountries,
-  setLoading,
-}: SortOptionsProps) {
+export default function SortOptions() {
   const [searchValue, setSearchValue] = useState<string>("");
-  const [debouncedSearch, setDebouncedSearch] = useState<string>("");
+  const { setIsLoading, setCountries, debouncedSearch, setDebouncedSearch } =
+    useAppContext();
 
   useEffect(() => {
     const delaySearch = setTimeout(() => {
@@ -29,25 +23,25 @@ export default function SortOptions({
   useEffect(() => {
     const debouncedInputSearch = async () => {
       if (debouncedSearch) {
-        setLoading(true);
+        setIsLoading(true);
         const c = await getCountryByName(debouncedSearch);
         setCountries(c);
-        setLoading(false);
+        setIsLoading(false);
       }
     };
 
     debouncedInputSearch();
-  }, [debouncedSearch, setCountries, setLoading]);
+  }, [debouncedSearch, setCountries, setIsLoading]);
 
   const handleInputChange = (search: string) => {
     setSearchValue(search);
   };
 
   const handleRegionChange = async (region: string) => {
-    setLoading(true);
+    setIsLoading(true);
     const c = await getCountriesByRegion(region);
     setCountries(c);
-    setLoading(false);
+    setIsLoading(false);
   };
 
   return (

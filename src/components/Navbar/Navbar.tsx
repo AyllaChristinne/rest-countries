@@ -1,12 +1,11 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ThemeContext } from "../../themeProvider/";
-import "./Navbar.scss";
+import { useAppContext } from "../../context/appContext";
 import { MoonIcon } from "../../assets/icons/MoonIcon";
 import { MoonIconFilled } from "../../assets/icons/MoonIconFilled";
+import "./Navbar.scss";
 
 export default function Navbar() {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useAppContext();
 
   return (
     <nav className="navbar">
