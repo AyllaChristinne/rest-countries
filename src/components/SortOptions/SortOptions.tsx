@@ -7,8 +7,13 @@ import { useAppContext } from "../../context/appContext";
 
 export default function SortOptions() {
   const [searchValue, setSearchValue] = useState<string>("");
-  const { setIsLoading, setCountries, debouncedSearch, setDebouncedSearch } =
-    useAppContext();
+  const {
+    setIsError,
+    setIsLoading,
+    setCountries,
+    debouncedSearch,
+    setDebouncedSearch,
+  } = useAppContext();
 
   useEffect(() => {
     const delaySearch = setTimeout(() => {
@@ -24,8 +29,13 @@ export default function SortOptions() {
     const debouncedInputSearch = async () => {
       if (debouncedSearch) {
         setIsLoading(true);
-        const c = await getCountryByName(debouncedSearch);
-        setCountries(c);
+        const response = await getCountryByName(debouncedSearch);
+
+        if (response.success) {
+          setCountries(response.data);
+        } else {
+          setIsError(true);
+        }
         setIsLoading(false);
       }
     };
@@ -39,8 +49,12 @@ export default function SortOptions() {
 
   const handleRegionChange = async (region: string) => {
     setIsLoading(true);
-    const c = await getCountriesByRegion(region);
-    setCountries(c);
+    const response = await getCountriesByRegion(region);
+    if (response.success) {
+      setCountries(response.data);
+    } else {
+      setIsError(true);
+    }
     setIsLoading(false);
   };
 

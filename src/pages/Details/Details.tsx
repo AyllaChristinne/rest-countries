@@ -14,13 +14,21 @@ import { NotFound } from "../../components/NotFound/NotFound";
 import "./Details.scss";
 
 export default function Details() {
-  const [country, setCountry] = useState<CountryType[]>();
+  const [country, setCountry] = useState<Array<CountryType>>();
   const navigate = useNavigate();
-  const { isError, isLoading, setIsLoading } = useAppContext();
+  const { isError, setIsError, isLoading, setIsLoading } = useAppContext();
 
   const getCountryInfo = useCallback(async () => {
-    const c = await getCountryByName(window.location.pathname.replace("/", ""));
-    setCountry(c);
+    const response = await getCountryByName(
+      window.location.pathname.replace("/", "")
+    );
+
+    if (response.success) {
+      setCountry(response.data);
+    } else {
+      setIsError(true);
+    }
+    setIsLoading(false);
   }, []);
 
   useEffect(() => {

@@ -12,7 +12,7 @@ const CountryCard: React.FC<CountryCardProps> = ({
 }) => {
   return (
     <div className="country-card">
-      <img src={flag} alt="country flag" />
+      <img src={flag} alt="country flag" className="country-image" />
       <div className="country-info">
         <p className="country-name">{name}</p>
         <p className="country-pop">

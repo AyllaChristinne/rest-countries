@@ -1,7 +1,18 @@
+export type CustomResponseType =
+  | {
+      success: true;
+      data: Array<CountryType>;
+    }
+  | {
+      success: false;
+      error: string;
+    };
+
 export type BorderCountryType = {
   name: string;
   alpha3Code: string;
 };
+
 export type CountryCardProps = {
   flag: string;
   name: string;

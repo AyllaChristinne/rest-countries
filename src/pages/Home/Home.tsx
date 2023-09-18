@@ -3,20 +3,32 @@ import { Link } from "react-router-dom";
 import { getAllCountries } from "../../services/getAllCountries";
 import CountryCard from "../../components/CountryCard/CountryCard";
 import SortOptions from "../../components/SortOptions/SortOptions";
-import { CountryType } from "../../types";
+import { CountryType, CustomResponseType } from "../../types";
 import { LoadingOverlay } from "../../components/LoadingOverlay/LoadingOverlay";
-import "./Home.scss";
 import Container from "../../components/Container/Container";
 import { useAppContext } from "../../context/appContext";
 import { NotFound } from "../../components/NotFound/NotFound";
+import "./Home.scss";
 
 function Home() {
-  const { isError, isLoading, setIsLoading, countries, setCountries } =
-    useAppContext();
+  const {
+    isError,
+    setIsError,
+    isLoading,
+    setIsLoading,
+    countries,
+    setCountries,
+  } = useAppContext();
 
   const getCountries = useCallback(async () => {
-    const c = await getAllCountries();
-    setCountries(c);
+    setIsLoading(true);
+    const response: CustomResponseType = await getAllCountries();
+    if (response.success) {
+      setCountries(response.data);
+    } else {
+      setIsError(true);
+    }
+
     setIsLoading(false);
   }, []);
 
