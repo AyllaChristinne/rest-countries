@@ -3,7 +3,6 @@
 .country-borders-title {
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 1rem;
 }
 
 .country-borders-buttons {
@@ -19,6 +18,12 @@
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1), 0 0 12px 0 rgba(0, 0, 0, 0.08);
   border-radius: 2px;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.country-borders-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1), 0 0 20px 0 rgba(0, 0, 0, 0.08);
 }
 
 .country-borders-none {

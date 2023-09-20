@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BorderButton from "../../components/BorderButton/BorderButton";
-import { getCountryByName } from "../../services/getCountryByName";
 import { CountryType } from "../../types";
 import { formatPopulation } from "../../functions/formatPopulation";
 import { getCurrencies } from "../../functions/getCurrencies";
@@ -11,6 +10,7 @@ import { BackIcon } from "../../assets/icons/BackIcon";
 import Container from "../../components/Container/Container";
 import { useAppContext } from "../../context/appContext";
 import { NotFound } from "../../components/NotFound/NotFound";
+import { getCountryByFullName } from "../../services/getCountryByFullName";
 import "./Details.scss";
 
 export default function Details() {
@@ -19,7 +19,7 @@ export default function Details() {
   const { isError, setIsError, isLoading, setIsLoading } = useAppContext();
 
   const getCountryInfo = useCallback(async () => {
-    const response = await getCountryByName(
+    const response = await getCountryByFullName(
       window.location.pathname.replace("/", "")
     );
 
@@ -37,7 +37,7 @@ export default function Details() {
 
   useEffect(() => {
     getCountryInfo();
-  }, [getCountryByName]);
+  }, [getCountryByFullName]);
 
   useEffect(() => {
     if (country !== undefined) {
