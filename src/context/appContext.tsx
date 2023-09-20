@@ -17,6 +17,10 @@ interface AppContextType {
   setCountries: (data: Array<CountryType> | null) => void;
   debouncedSearch: string;
   setDebouncedSearch: (search: string) => void;
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
+  pageNumbers: Array<number>;
+  setPageNumbers: (pages: number[]) => void;
 }
 
 const initialContext: AppContextType = {
@@ -30,6 +34,10 @@ const initialContext: AppContextType = {
   setCountries: () => {},
   debouncedSearch: "",
   setDebouncedSearch: () => {},
+  currentPage: 1,
+  setCurrentPage: () => {},
+  pageNumbers: [],
+  setPageNumbers: () => {},
 };
 
 const AppContext = createContext<AppContextType>(initialContext);
@@ -40,6 +48,8 @@ export const AppProvider = ({ children }: IProps) => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [countries, setCountries] = useState<Array<CountryType> | null>(null);
   const [debouncedSearch, setDebouncedSearch] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [pageNumbers, setPageNumbers] = useState<Array<number>>([]);
 
   useEffect(() => {
     const { localStorage } = window;
@@ -68,6 +78,10 @@ export const AppProvider = ({ children }: IProps) => {
         setCountries,
         debouncedSearch,
         setDebouncedSearch,
+        currentPage,
+        setCurrentPage,
+        pageNumbers,
+        setPageNumbers,
       }}
     >
       <div data-theme={theme}>{children}</div>

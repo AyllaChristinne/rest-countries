@@ -13,6 +13,7 @@ export default function SortOptions() {
     setCountries,
     debouncedSearch,
     setDebouncedSearch,
+    setPageNumbers,
   } = useAppContext();
 
   useEffect(() => {
@@ -35,6 +36,7 @@ export default function SortOptions() {
           setCountries(response.data);
         } else {
           setIsError(true);
+          setPageNumbers([]);
         }
         setIsLoading(false);
       }
@@ -54,6 +56,7 @@ export default function SortOptions() {
       setCountries(response.data);
     } else {
       setIsError(true);
+      setPageNumbers([]);
     }
     setIsLoading(false);
   };
