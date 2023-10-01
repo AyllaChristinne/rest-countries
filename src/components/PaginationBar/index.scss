@@ -1,24 +1,22 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .pagination_container {
   margin: $size-xxl auto;
-  width: fit-content;
-  max-width: calc(13 * 40 + 48 * 2);
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-
-  box-shadow: 1px 1px 1px 1px #00000010, 2px 2px 2px 2px #00000008;
   border-radius: 8px;
   overflow: hidden;
+  box-shadow: 1px 1px 1px 1px #00000010, 2px 2px 2px 2px #00000008;
 }
 
 .pagination_button {
   outline: none;
   border: none;
-  fill: #b7b5c1;
   color: #b7b5c1;
   background-color: var(--color-elements);
-  transition: background-color 0.2s;
+  transition: background-color 0.3s;
   user-select: none;
 
   &:hover {
@@ -27,7 +25,7 @@
   }
 
   &.active {
-    color: #263238;
+    color: var(--color-pagination--active);
     font-weight: bold;
   }
 }
@@ -44,6 +42,8 @@
 }
 
 .pagination_button__arrow {
+  fill: #b7b5c1;
+
   &:disabled {
     background-color: var(--color-elements);
     cursor: none;
@@ -52,7 +52,9 @@
 }
 
 .pagination_button__number {
-  width: 40px;
+  flex-grow: 1;
+  min-width: 40px;
+  width: 12%;
   height: 40px;
   font-weight: 600;
   font-size: 14px;
@@ -61,4 +63,26 @@
 .pagination_button__arrow {
   width: 48px;
   height: 40px;
+}
+
+@include media("SM") {
+  .pagination_container {
+    max-width: 616px;
+  }
+}
+
+@include media("MD") {
+  .pagination_button__number {
+    width: 40px;
+  }
+}
+
+@include media("LG") {
+  .pagination_container {
+    max-width: fit-content;
+    margin: $size-xxxl auto;
+  }
+  .pagination_button__number {
+    width: 60px;
+  }
 }

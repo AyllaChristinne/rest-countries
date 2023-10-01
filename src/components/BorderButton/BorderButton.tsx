@@ -13,12 +13,13 @@ export type BorderType = {
 export default function BorderButton({ borderCodes }: BorderType) {
   const [borderCountries, setBorderCountries] = useState([]);
   const [hasNoBorders, setHasNoBorders] = useState<boolean>(false);
-  const { isLoading, setIsLoading } = useAppContext();
+  const { isLoading, setIsLoading, setIsError } = useAppContext();
 
   async function fetchBorderCountries() {
     if (borderCodes) {
       const countries = await getBorders(borderCodes);
       setBorderCountries(countries);
+      setIsError(false);
     } else {
       setHasNoBorders(true);
     }
@@ -35,21 +36,19 @@ export default function BorderButton({ borderCodes }: BorderType) {
   }, []);
 
   return (
-    <div className="country-borders">
-      <p className="country-borders-title">Border Countries:</p>
+    <div className="borders">
+      <p className="borders_title">Border Countries:</p>
       {isLoading ? (
         <LoadingOverlay />
       ) : hasNoBorders ? (
-        <span className="country-borders-none">
-          This country has no borders.
-        </span>
+        <span className="borders__none">This country has no borders.</span>
       ) : (
-        <div className="country-borders-buttons">
+        <div className="borders_buttons">
           {borderCountries.map((country: CountryType) => (
             <Link
               to={`/${country.name}`}
               key={country.alpha3Code}
-              className="country-borders-button"
+              className="borders_button"
             >
               {country.name}
             </Link>

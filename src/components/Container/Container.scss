@@ -11,30 +11,32 @@
 .grid {
   width: 100%;
   margin: 0 auto;
-  padding: $size-lg;
+  padding: $size-xl;
+  box-sizing: border-box;
 }
 
 @include media("SM") {
   .grid {
-    padding: $size-lg;
+    padding: $size-xl;
   }
 }
 
 @include media("MD") {
   .grid {
-    padding: $size-xl;
+    padding: $size-xxl;
   }
 }
 
 @include media("LG") {
   .grid {
     padding: $size-xxl;
+    width: 100%;
+    max-width: 1288px;
   }
 }
 
 @include media("XL") {
   .grid {
     padding: $size-xxl 0;
-    max-width: 1366px;
   }
 }

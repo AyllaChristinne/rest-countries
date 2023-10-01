@@ -1,44 +1,63 @@
 @import "../../styles//mixins.scss";
 
-.country-borders-title {
+.borders {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.borders_title {
   font-size: 18px;
   font-weight: 600;
 }
 
-.country-borders-buttons {
+.borders_buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.country-borders-button {
-  padding: 6px 16px;
-  background-color: var(--color-elements);
-  font-size: 14px;
-  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1), 0 0 12px 0 rgba(0, 0, 0, 0.08);
+.borders_button {
+  min-width: 30%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 2px;
-  cursor: pointer;
+  font-size: 14px;
+  background-color: var(--color-elements);
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.1),
+    1px 1px 12px 1px rgba(0, 0, 0, 0.08);
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 
-.country-borders-button:hover {
+.borders_button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1), 0 0 20px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.1),
+    2px 2px 12px 2px rgba(0, 0, 0, 0.08);
 }
 
-.country-borders-none {
+.borders_none {
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 300;
+}
+
+@include media("SM") {
+  .borders_button {
+    min-width: 100px;
+  }
 }
 
 @include media("LG") {
-  .country-borders {
+  .borders {
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 16px;
   }
 
-  .country-borders-title {
+  .borders_title {
     margin: 0;
     min-width: fit-content;
   }

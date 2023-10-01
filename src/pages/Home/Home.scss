@@ -1,5 +1,13 @@
 @import "../../styles/mixins.scss";
 
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease-in;
+}
+
 .countries-cards {
   display: flex;
   flex-wrap: wrap;
@@ -9,8 +17,32 @@
   padding: 0 50px;
 }
 
-@include media("LG") {
+@include media("SM") {
   .countries-cards {
-    padding: 20px;
+    padding: 0;
+  }
+}
+
+@include media("XL") {
+  .countries-cards {
+    gap: 50px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
   }
 }

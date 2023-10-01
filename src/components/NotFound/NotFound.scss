@@ -1,20 +1,22 @@
 @import "../../styles/variables.scss";
 @import "../../styles/mixins.scss";
 
-.notFound_image {
+.notFound_container {
   display: flex;
-  aspect-ratio: 2/1;
-  max-width: 100%;
-  margin-top: 50px;
-  margin-bottom: 24px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.notFound_image {
+  width: 400px;
+  aspect-ratio: 1.8;
 }
 
 .notFound_textContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: $size-md;
+  gap: $size-sm;
 }
 
 .notFound_text {
@@ -22,25 +24,27 @@
   line-height: 1.5;
 }
 
-.notFound_textLink {
+.notFound_text__link {
   text-decoration: underline;
   cursor: pointer;
 }
 
+@include media("SM") {
+  .notFound_image {
+    width: 550px;
+  }
+}
+
 @include media("MD") {
   .notFound_image {
-    max-width: 700px;
-    margin: 50px auto 24px;
+    width: 650px;
+    margin: $size-g auto $size-xl;
   }
 }
 
 @include media("LG") {
-  .notFound_image {
-    max-width: 800px;
-  }
-
   .notFound_text__big {
-    font-size: 36px;
+    font-size: 32px;
   }
 
   .notFound_text {

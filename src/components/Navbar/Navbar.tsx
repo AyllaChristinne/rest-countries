@@ -8,25 +8,25 @@ export default function Navbar() {
   const { theme, setTheme } = useAppContext();
 
   return (
-    <nav className="navbar">
-      <div className="navbar-content">
-        <Link to="/" className="navbar-text">
+    <nav className="navbar_container">
+      <div className="navbar_content">
+        <Link to="/" className="navbar_text">
           Where in the world?
         </Link>
         <button
           type="button"
           value={theme}
-          className="darkMode-btn"
+          className="navbar_themeBtn"
           onClick={() =>
             theme === "light" ? setTheme("dark") : setTheme("light")
           }
         >
           {theme === "light" ? (
-            <MoonIcon classNames="darkMode-icon" />
+            <MoonIcon classNames="navbar_themeIcon" />
           ) : (
-            <MoonIconFilled classNames="darkMode-icon" />
+            <MoonIconFilled classNames="navbar_themeIcon" />
           )}
-          <span className="darkMode-text">Dark Mode</span>
+          <span className="navbar_themeText">Dark Mode</span>
         </button>
       </div>
     </nav>

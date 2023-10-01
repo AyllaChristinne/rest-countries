@@ -15,14 +15,9 @@
   gap: 36px;
 }
 
-.details-country {
-  align-items: center;
-  justify-content: center;
-}
-
 .details-country-back {
   width: 100px;
-  padding: 6px $size-lg;
+  padding: 6px $size-md;
   font-size: 14px;
   background-color: var(--color-elements);
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1), 0 0 14px 0 rgba(0, 0, 0, 0.08);
@@ -30,7 +25,7 @@
   border: none;
   cursor: pointer;
   display: flex;
-  gap: $size-sm;
+  gap: $size-xs;
   align-items: center;
   justify-content: center;
 }
@@ -58,6 +53,15 @@
 
 .details-country-text span {
   font-weight: 400;
+}
+
+@include media("MD") {
+  .details-country-img {
+    width: 100%;
+    height: auto;
+    max-height: unset;
+    aspect-ratio: 4/3;
+  }
 }
 
 @include media("LG") {

@@ -1,85 +1,105 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getCountriesByRegion } from "../../services/getCountriesByRegion";
 import "./SortOptions.scss";
 import { SearchIcon } from "../../assets/icons/SearchIcon";
 import { getCountryByName } from "../../services/getCountryByName";
 import { useAppContext } from "../../context/appContext";
+import { resetPageNumbers } from "../../functions/resetPageNumbers";
+import { setCountriesByPage } from "../../functions/setCountriesByPage";
 
 export default function SortOptions() {
   const [searchValue, setSearchValue] = useState<string>("");
   const {
+    isLoading,
+    countries,
+    currentCountries,
+    currentPage,
+    isError,
     setIsError,
     setIsLoading,
-    setCountries,
-    debouncedSearch,
-    setDebouncedSearch,
+    setCurrentCountries,
     setPageNumbers,
   } = useAppContext();
+  let timeout: NodeJS.Timeout;
 
-  useEffect(() => {
-    const delaySearch = setTimeout(() => {
-      setDebouncedSearch(searchValue);
-    }, 1000);
+  const debouncedInputSearch = async (search: string) => {
+    const response = await getCountryByName(search);
+    if (response.success) {
+      setCurrentCountries(response.data);
+      setIsError(false);
+    } else {
+      setIsError(true);
+      setPageNumbers([]);
+      setCurrentCountries(null);
+    }
+  };
 
-    return () => {
-      clearTimeout(delaySearch);
-    };
-  }, [searchValue]);
-
-  useEffect(() => {
-    const debouncedInputSearch = async () => {
-      if (debouncedSearch) {
+  const handleSearch = (search: string) => {
+    if (search === "" && countries) {
+      setCountriesByPage(
+        "paginationBar",
+        countries,
+        currentPage,
+        setCurrentCountries
+      );
+      resetPageNumbers(countries, setPageNumbers);
+    } else {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        console.log("====>", searchValue);
+        console.log("setLoading true");
         setIsLoading(true);
-        const response = await getCountryByName(debouncedSearch);
+        setCurrentCountries(null);
+        if (search !== "") debouncedInputSearch(search);
 
-        if (response.success) {
-          setCountries(response.data);
-        } else {
-          setIsError(true);
-          setPageNumbers([]);
+        if (currentCountries && !isError) {
+          setCountriesByPage(
+            "paginationBar",
+            currentCountries,
+            currentPage,
+            setCurrentCountries
+          );
+          resetPageNumbers(currentCountries, setPageNumbers);
         }
+        console.log("setLoading false");
         setIsLoading(false);
-      }
-    };
-
-    debouncedInputSearch();
-  }, [debouncedSearch, setCountries, setIsLoading]);
-
-  const handleInputChange = (search: string) => {
-    setSearchValue(search);
+      }, 1000);
+    }
   };
 
   const handleRegionChange = async (region: string) => {
     setIsLoading(true);
     const response = await getCountriesByRegion(region);
     if (response.success) {
-      setCountries(response.data);
+      setCurrentCountries(response.data);
+      setIsError(false);
     } else {
       setIsError(true);
       setPageNumbers([]);
+      setCurrentCountries(null);
     }
     setIsLoading(false);
   };
 
   return (
-    <div className="sort-options">
-      <div className="search-input-div">
-        <SearchIcon classNames="search-icon" />
+    <div className="sortOptions_container">
+      <div className="search_container">
+        <SearchIcon classNames="search_icon" />
         <input
           type="search"
-          className="search-input"
+          className="search_input"
           name="search"
           placeholder="Search for a country..."
           autoComplete="off"
-          value={searchValue}
           onChange={(e) => {
-            handleInputChange(e.target.value);
+            setSearchValue(e.target.value);
+            handleSearch(e.target.value);
           }}
         />
       </div>
 
       <select
-        className="region-select"
+        className="region_dropdown"
         defaultValue="default"
         onChange={(e) => {
           handleRegionChange(e.target.value);
@@ -88,11 +108,21 @@ export default function SortOptions() {
         <option value="default" disabled>
           Filter by region
         </option>
-        <option value="africa">Africa</option>
-        <option value="americas">America</option>
-        <option value="asia">Asia</option>
-        <option value="europe">Europe</option>
-        <option value="oceania">Oceania</option>
+        <option value="africa" className="region_dropdownOption">
+          Africa
+        </option>
+        <option value="americas" className="region_dropdownOption">
+          America
+        </option>
+        <option value="asia" className="region_dropdownOption">
+          Asia
+        </option>
+        <option value="europe" className="region_dropdownOption">
+          Europe
+        </option>
+        <option value="oceania" className="region_dropdownOption">
+          Oceania
+        </option>
       </select>
     </div>
   );

@@ -25,6 +25,7 @@ export default function Details() {
 
     if (response.success) {
       setCountry(response.data);
+      setIsError(false);
     } else {
       setIsError(true);
     }

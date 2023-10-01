@@ -1,7 +1,7 @@
 @import "../../styles/variables.scss";
 @import "../../styles/mixins.scss";
 
-.navbar {
+.navbar_container {
   width: 100%;
   height: 64px;
   box-sizing: border-box;
@@ -10,10 +10,10 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 1;
 }
 
-.navbar-content {
+.navbar_content {
   width: 100%;
   height: 100%;
   display: flex;
@@ -24,64 +24,58 @@
   justify-content: space-between;
 }
 
-.navbar-text {
+.navbar_text {
   font-size: 16px;
   font-weight: 800;
   cursor: pointer;
 }
 
-.darkMode-btn {
+.navbar_themeBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: $size-sm;
+  gap: $size-xs;
   outline: none;
   border: none;
   background-color: transparent;
   cursor: pointer;
+
+  &:hover {
+    text-decoration: underline var(--color-text);
+  }
 }
 
-.darkMode-btn:hover {
-  text-decoration: underline var(--color-text);
-}
-
-.darkMode-text {
+.navbar_themeText {
   font-weight: 600;
   font-size: 14px;
 }
 
-.darkMode-icon {
+.navbar_themeIcon {
   width: 20px;
   height: 20px;
 }
 
 @include media("SM") {
-  .navbar-content {
-    padding: 0 $size-lg;
-  }
-}
-
-@include media("MD") {
-  .navbar-content {
+  .navbar_content {
     padding: 0 $size-xl;
   }
 }
 
+@include media("MD") {
+  .navbar_content {
+    padding: 0 $size-xxl;
+  }
+}
+
 @include media("LG") {
-  .navbar-content {
+  .navbar_content {
     padding: 0 $size-xxl;
   }
 }
 
 @include media("XL") {
-  .navbar-content {
-    max-width: 1366px;
-  }
-}
-
-@include media("XL") {
-  .navbar-content {
+  .navbar_content {
     padding: 0;
-    max-width: 1366px;
+    max-width: 1280px;
   }
 }
