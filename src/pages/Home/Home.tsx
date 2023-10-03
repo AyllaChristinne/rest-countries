@@ -22,6 +22,7 @@ function Home() {
     currentCountries,
     pageNumbers,
     setPageNumbers,
+    filteredCountries,
   } = useAppContext();
 
   const getCountries = async () => {
@@ -56,19 +57,32 @@ function Home() {
           <div
             className={`countries-cards ${isFadeOut ? "fade-out" : "fade-in"}`}
           >
-            {currentCountries &&
-              currentCountries.map((country: CountryType) => {
-                return (
-                  <CountryCard
-                    key={country.name}
-                    flag={country.flag}
-                    name={country.name}
-                    pop={country.population}
-                    region={country.region}
-                    capital={country.capital}
-                  />
-                );
-              })}
+            {filteredCountries
+              ? filteredCountries.map((country: CountryType) => {
+                  return (
+                    <CountryCard
+                      key={country.name}
+                      flag={country.flag}
+                      name={country.name}
+                      pop={country.population}
+                      region={country.region}
+                      capital={country.capital}
+                    />
+                  );
+                })
+              : currentCountries &&
+                currentCountries.map((country: CountryType) => {
+                  return (
+                    <CountryCard
+                      key={country.name}
+                      flag={country.flag}
+                      name={country.name}
+                      pop={country.population}
+                      region={country.region}
+                      capital={country.capital}
+                    />
+                  );
+                })}
           </div>
           <PaginationBar setIsFadeOut={setIsFadeOut} scrollToTop />
         </>

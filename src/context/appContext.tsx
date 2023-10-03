@@ -23,6 +23,8 @@ interface AppContextType {
   setPageNumbers: (pages: number[]) => void;
   currentCountries: Array<CountryType> | null;
   setCurrentCountries: (data: Array<CountryType> | null) => void;
+  filteredCountries: Array<CountryType> | null;
+  setFilteredCountries: (data: Array<CountryType> | null) => void;
 }
 
 const initialContext: AppContextType = {
@@ -42,6 +44,8 @@ const initialContext: AppContextType = {
   setPageNumbers: () => {},
   currentCountries: null,
   setCurrentCountries: () => {},
+  filteredCountries: null,
+  setFilteredCountries: () => {},
 };
 
 const AppContext = createContext<AppContextType>(initialContext);
@@ -55,6 +59,8 @@ export const AppProvider = ({ children }: IProps) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pageNumbers, setPageNumbers] = useState<Array<number>>([]);
   const [currentCountries, setCurrentCountries] =
+    useState<Array<CountryType> | null>(null);
+  const [filteredCountries, setFilteredCountries] =
     useState<Array<CountryType> | null>(null);
 
   useEffect(() => {
@@ -90,6 +96,8 @@ export const AppProvider = ({ children }: IProps) => {
         setPageNumbers,
         currentCountries,
         setCurrentCountries,
+        filteredCountries,
+        setFilteredCountries,
       }}
     >
       <div data-theme={theme}>{children}</div>
