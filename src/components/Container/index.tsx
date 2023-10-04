@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import "./Container.scss";
+import "./index.scss";
 
 interface IContainer {
   children: ReactNode;

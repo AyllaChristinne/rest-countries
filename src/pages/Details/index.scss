@@ -1,0 +1,105 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.details_backButton {
+  width: 100px;
+  padding: $size-xs $size-md;
+  font-size: 14px;
+  background-color: var(--color-elements);
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1), 0 0 8px 0 rgba(0, 0, 0, 0.08);
+  border-radius: $size-xxs;
+  border: none;
+  display: flex;
+  gap: $size-xs;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $size-g;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.1),
+      1px 1px 8px 1px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.details_backIcon {
+  width: 16px;
+  height: 18px;
+}
+
+.details_countryImg {
+  max-width: 100%;
+  aspect-ratio: 380/270;
+}
+
+.details_countryName {
+  font-size: 24px;
+  margin: $size-xxl 0 $size-xl;
+}
+
+.details_countryText__bold {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 600;
+  margin-bottom: $size-sm;
+}
+
+.details_countryText {
+  font-weight: 400;
+}
+
+.details_countryInfo1,
+.details_countryInfo2 {
+  margin-bottom: $size-g;
+}
+
+@include media("SM") {
+  .details_countryImg {
+    aspect-ratio: 3/2;
+  }
+}
+
+@include media("SM") {
+  .details_countryImg {
+    max-height: 487px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+@include media("LG") {
+  .details_country {
+    display: flex;
+    flex-direction: row;
+    gap: $size-xxxl;
+  }
+
+  .details_countryImg {
+    margin: 0;
+    width: 50%;
+    height: 350px;
+  }
+
+  .details_countryName {
+    margin: 0;
+    font-size: 32px;
+  }
+
+  .details_countryInfos {
+    display: flex;
+    flex-direction: column;
+    gap: $size-xl;
+    width: 50%;
+  }
+
+  .details_countryInfo1,
+  .details_countryInfo2 {
+    margin: 0;
+  }
+}
+
+@include media("XL") {
+  .details_countryImg {
+    height: auto;
+  }
+}

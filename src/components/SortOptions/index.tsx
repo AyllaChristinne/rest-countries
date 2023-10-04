@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { getCountriesByRegion } from "../../services/getCountriesByRegion";
-import "./SortOptions.scss";
+import "./index.scss";
 import { SearchIcon } from "../../assets/icons/SearchIcon";
 import { getCountryByName } from "../../services/getCountryByName";
 import { useAppContext } from "../../context/appContext";

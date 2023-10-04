@@ -22,17 +22,28 @@ export const PaginationBar = ({
     countries,
     pageNumbers,
     currentPage,
+    filteredCountries,
     setCurrentPage,
     setCurrentCountries,
     setPageNumbers,
   } = useAppContext();
 
   const isFirstPage = currentPage === 1 ? true : false;
-  const isLastPage = currentPage === pageNumbers.length + 1 ? true : false;
+  const isLastPage = currentPage === pageNumbers.length ? true : false;
 
   const handlePageChange = () => {
-    if (countries) {
-      setIsFadeOut(true);
+    setIsFadeOut(true);
+    if (filteredCountries) {
+      setTimeout(() => {
+        setCountriesByPage(
+          "paginationBar",
+          filteredCountries,
+          currentPage,
+          setCurrentCountries
+        );
+        setIsFadeOut(false);
+      }, 300);
+    } else if (countries) {
       setTimeout(() => {
         setCountriesByPage(
           "paginationBar",
@@ -46,10 +57,10 @@ export const PaginationBar = ({
   };
 
   useEffect(() => {
-    if (!currentCountries && countries && !isError) {
+    if (!filteredCountries && !currentCountries && countries && !isError) {
       resetPageNumbers(countries, setPageNumbers);
-    } else if (currentCountries && !isError) {
-      resetPageNumbers(currentCountries, setPageNumbers);
+    } else if (filteredCountries && !isError) {
+      resetPageNumbers(filteredCountries, setPageNumbers);
     }
   }, []);
 

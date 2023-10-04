@@ -1,5 +1,5 @@
 import Loading from "react-loading";
-import "./LoadingOverlay.scss";
+import "./index.scss";
 
 export const LoadingOverlay = () => {
   return (

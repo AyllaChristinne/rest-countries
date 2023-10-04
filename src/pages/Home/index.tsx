@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { getAllCountries } from "../../services/getAllCountries";
-import CountryCard from "../../components/CountryCard/CountryCard";
-import SortOptions from "../../components/SortOptions/SortOptions";
+import CountryCard from "../../components/CountryCard";
+import SortOptions from "../../components/SortOptions";
 import { CountryType, CustomResponseType } from "../../types";
-import { LoadingOverlay } from "../../components/LoadingOverlay/LoadingOverlay";
-import Container from "../../components/Container/Container";
+import { LoadingOverlay } from "../../components/LoadingOverlay";
+import Container from "../../components/Container";
 import { useAppContext } from "../../context/appContext";
-import { NotFound } from "../../components/NotFound/NotFound";
-import "./Home.scss";
+import { NotFound } from "../../components/NotFound";
+import "./index.scss";
 import { PaginationBar } from "../../components/PaginationBar";
+import { resetPageNumbers } from "../../functions/resetPageNumbers";
+import { setCountriesByPage } from "../../functions/setCountriesByPage";
 
 function Home() {
   const [isFadeOut, setIsFadeOut] = useState(false);
@@ -20,8 +22,10 @@ function Home() {
     setIsLoading,
     setCountries,
     currentCountries,
+    setCurrentCountries,
     pageNumbers,
     setPageNumbers,
+    currentPage,
     filteredCountries,
   } = useAppContext();
 
@@ -30,6 +34,8 @@ function Home() {
     const response: CustomResponseType = await getAllCountries();
     if (response.success) {
       setCountries(response.data);
+      resetPageNumbers(response.data, setPageNumbers);
+      setCountriesByPage("", response.data, currentPage, setCurrentCountries);
       setIsError(false);
     } else {
       setIsError(true);
@@ -41,9 +47,6 @@ function Home() {
     getCountries();
   }, []);
 
-  console.log("pageNumbers", pageNumbers);
-  console.log("currentCountries", currentCountries);
-
   return (
     <Container>
       <SortOptions />
@@ -53,7 +56,9 @@ function Home() {
         <NotFound />
       ) : (
         <>
-          <PaginationBar setIsFadeOut={setIsFadeOut} />
+          {pageNumbers.length > 1 && (
+            <PaginationBar setIsFadeOut={setIsFadeOut} />
+          )}
           <div
             className={`countries-cards ${isFadeOut ? "fade-out" : "fade-in"}`}
           >
@@ -84,7 +89,9 @@ function Home() {
                   );
                 })}
           </div>
-          <PaginationBar setIsFadeOut={setIsFadeOut} scrollToTop />
+          {pageNumbers.length > 1 && (
+            <PaginationBar setIsFadeOut={setIsFadeOut} scrollToTop />
+          )}
         </>
       )}
     </Container>

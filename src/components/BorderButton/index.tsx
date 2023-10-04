@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { LoadingOverlay } from "../LoadingOverlay/LoadingOverlay";
+import { LoadingOverlay } from "../LoadingOverlay";
 import { getBorders } from "../../services/getBorders";
-import "./BorderButton.scss";
+import "./index.scss";
 import { CountryType } from "../../types";
 import { useAppContext } from "../../context/appContext";
 

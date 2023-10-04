@@ -1,7 +1,7 @@
 import React from "react";
 import { CountryCardProps } from "../../types";
 import { formatPopulation } from "../../functions/formatPopulation";
-import "./CountryCard.scss";
+import "./index.scss";
 import { Link } from "react-router-dom";
 
 const CountryCard: React.FC<CountryCardProps> = ({
