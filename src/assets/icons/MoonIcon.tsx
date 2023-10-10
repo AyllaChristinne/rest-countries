@@ -1,6 +1,4 @@
-export type IconProps = {
-  classNames?: string;
-};
+import { IconProps } from "../../types";
 
 export const MoonIcon = ({ classNames }: IconProps) => (
   <span className={classNames}>

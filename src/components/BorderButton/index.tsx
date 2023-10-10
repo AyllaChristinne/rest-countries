@@ -6,7 +6,7 @@ import "./index.scss";
 import { CountryType } from "../../types";
 import { useAppContext } from "../../context/appContext";
 
-export type BorderType = {
+type BorderType = {
   borderCodes: string[];
 };
 

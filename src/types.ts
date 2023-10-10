@@ -8,33 +8,33 @@ export type CustomResponseType =
       error: string;
     };
 
-export type BorderCountryType = {
+export interface BorderCountryType {
   name: string;
   alpha3Code: string;
-};
+}
 
-export type CountryCardProps = {
+export interface CountryCardProps {
   flag: string;
   name: string;
   pop: number;
   region: string;
   capital: string;
-};
+}
 
-export type CurrenciesType = {
+export interface CurrenciesType {
   code: string;
   name: string;
   symbol: string;
-};
+}
 
-export type LanguagesType = {
+export interface LanguagesType {
   iso639_1: string;
   iso639_2: string;
   name: string;
   nativeName: string;
-};
+}
 
-export type CountryType = {
+export interface CountryType {
   name: string;
   flag: string;
   nativeName: string;
@@ -47,4 +47,8 @@ export type CountryType = {
   languages: Array<LanguagesType>;
   borders: Array<string>;
   alpha3Code: string;
+}
+
+export type IconProps = {
+  classNames?: string;
 };

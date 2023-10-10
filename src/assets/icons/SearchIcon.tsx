@@ -1,4 +1,4 @@
-import { IconProps } from "./MoonIcon";
+import { IconProps } from "../../types";
 
 export const SearchIcon = ({ classNames }: IconProps) => (
   <span className={classNames}>
