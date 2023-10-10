@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { getCountriesByRegion } from "../../services/getCountriesByRegion";
 import "./index.scss";
 import { SearchIcon } from "../../assets/icons/SearchIcon";
@@ -8,12 +8,9 @@ import { resetPageNumbers } from "../../functions/resetPageNumbers";
 import { setCountriesByPage } from "../../functions/setCountriesByPage";
 
 export default function SortOptions() {
-  const [searchValue, setSearchValue] = useState<string>("");
   const timer = useRef<NodeJS.Timeout | null>(null);
   const {
-    isLoading,
     countries,
-    currentCountries,
     currentPage,
     isError,
     filteredCountries,
@@ -27,14 +24,8 @@ export default function SortOptions() {
   const debouncedInputSearch = async (search: string) => {
     const response = await getCountryByName(search);
     if (response.success) {
-      console.log(
-        "filteredCountries no debouncedSearch ANTES",
-        filteredCountries
-      );
-      console.log("response.data", response.data);
       setFilteredCountries(response.data);
       setIsError(false);
-      console.log("filteredCountries no debouncedSearch", filteredCountries);
     } else {
       setIsError(true);
       setFilteredCountries(null);
@@ -46,16 +37,7 @@ export default function SortOptions() {
 
     timer.current = setTimeout(async () => {
       setIsLoading(true);
-      if (search === "" && countries) {
-        setFilteredCountries(null);
-        setCountriesByPage(
-          "paginationBar",
-          countries,
-          currentPage,
-          setCurrentCountries
-        );
-        resetPageNumbers(countries, setPageNumbers);
-      } else {
+      if (search.trim() !== "") {
         await debouncedInputSearch(search);
 
         if (filteredCountries && !isError) {
@@ -67,6 +49,15 @@ export default function SortOptions() {
             setCurrentCountries
           );
         }
+      } else if (search.trim() === "" && countries) {
+        setFilteredCountries(null);
+        setCountriesByPage(
+          "paginationBar",
+          countries,
+          currentPage,
+          setCurrentCountries
+        );
+        resetPageNumbers(countries, setPageNumbers);
       }
       setIsLoading(false);
     }, 1000);
@@ -107,7 +98,6 @@ export default function SortOptions() {
         className="region_dropdown"
         defaultValue="default"
         onChange={(e) => {
-          setSearchValue(e.target.value);
           handleRegionChange(e.target.value);
         }}
       >
