@@ -29,26 +29,11 @@
   color: var(--color-input);
 }
 
-.search_container,
-.region_dropdown {
+.search_container {
   height: 56px;
   background: var(--color-elements);
   border-radius: $size-xs;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.06),
-    0 2px 2px 0 rgba(0, 0, 0, 0.03);
-}
-
-.region_dropdown {
-  font-size: 14px;
-  height: 48px;
-  padding: 0 20px;
-  border: none;
-  outline: none;
-  width: 240px;
-
-  &:hover {
-    cursor: pointer;
-  }
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.04), 0 0 6px rgba(0, 0, 0, 0.02);
 }
 
 @include media("MD") {
@@ -59,11 +44,5 @@
 
   .search_container {
     width: 60%;
-  }
-}
-
-@include media("LG") {
-  .region_dropdown {
-    width: 257px;
   }
 }

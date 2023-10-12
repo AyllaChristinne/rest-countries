@@ -1,11 +1,11 @@
 import { useRef } from "react";
-import { getCountriesByRegion } from "../../services/getCountriesByRegion";
-import "./index.scss";
 import { SearchIcon } from "../../assets/icons/SearchIcon";
 import { getCountryByName } from "../../services/getCountryByName";
 import { useAppContext } from "../../context/appContext";
 import { resetPageNumbers } from "../../functions/resetPageNumbers";
 import { setCountriesByPage } from "../../functions/setCountriesByPage";
+import { Dropdown } from "../Dropdown";
+import "./index.scss";
 
 export default function SortOptions() {
   const timer = useRef<NodeJS.Timeout | null>(null);
@@ -43,39 +43,19 @@ export default function SortOptions() {
         if (filteredCountries && !isError) {
           resetPageNumbers(filteredCountries, setPageNumbers);
           setCountriesByPage(
-            "paginationBar",
             filteredCountries,
             currentPage,
             setCurrentCountries
           );
         }
-      } else if (search.trim() === "" && countries) {
+      } else {
         setFilteredCountries(null);
-        setCountriesByPage(
-          "paginationBar",
-          countries,
-          currentPage,
-          setCurrentCountries
-        );
-        resetPageNumbers(countries, setPageNumbers);
+        countries &&
+          setCountriesByPage(countries, currentPage, setCurrentCountries);
+        countries && resetPageNumbers(countries, setPageNumbers);
       }
       setIsLoading(false);
     }, 1000);
-  };
-
-  const handleRegionChange = async (region: string) => {
-    setIsLoading(true);
-
-    const response = await getCountriesByRegion(region);
-    if (response.success) {
-      setCurrentCountries(response.data);
-      setIsError(false);
-    } else {
-      setIsError(true);
-      setPageNumbers([]);
-      setCurrentCountries(null);
-    }
-    setIsLoading(false);
   };
 
   return (
@@ -94,32 +74,7 @@ export default function SortOptions() {
         />
       </div>
 
-      <select
-        className="region_dropdown"
-        defaultValue="default"
-        onChange={(e) => {
-          handleRegionChange(e.target.value);
-        }}
-      >
-        <option value="default" disabled>
-          Filter by region
-        </option>
-        <option value="africa" className="region_dropdownOption">
-          Africa
-        </option>
-        <option value="americas" className="region_dropdownOption">
-          America
-        </option>
-        <option value="asia" className="region_dropdownOption">
-          Asia
-        </option>
-        <option value="europe" className="region_dropdownOption">
-          Europe
-        </option>
-        <option value="oceania" className="region_dropdownOption">
-          Oceania
-        </option>
-      </select>
+      <Dropdown />
     </div>
   );
 }
