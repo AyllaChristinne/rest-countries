@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllCountries } from "../../services/getAllCountries";
+import { getAllCountries } from "../../services/countries";
 import CountryCard from "../../components/CountryCard";
 import SortOptions from "../../components/SortOptions";
 import { CountryType, CustomResponseType } from "../../types";
@@ -7,15 +7,14 @@ import { LoadingOverlay } from "../../components/LoadingOverlay";
 import Container from "../../components/Container";
 import { useAppContext } from "../../context/appContext";
 import { NotFound } from "../../components/NotFound";
-import "./index.scss";
 import { PaginationBar } from "../../components/PaginationBar";
 import { resetPageNumbers } from "../../functions/resetPageNumbers";
 import { setCountriesByPage } from "../../functions/setCountriesByPage";
+import "./index.scss";
 
 function Home() {
   const [isFadeOut, setIsFadeOut] = useState(false);
   const {
-    countries,
     isError,
     setIsError,
     isLoading,
@@ -35,7 +34,7 @@ function Home() {
     if (response.success) {
       setCountries(response.data);
       resetPageNumbers(response.data, setPageNumbers);
-      setCountriesByPage("", response.data, currentPage, setCurrentCountries);
+      setCountriesByPage(response.data, currentPage, setCurrentCountries);
       setIsError(false);
     } else {
       setIsError(true);

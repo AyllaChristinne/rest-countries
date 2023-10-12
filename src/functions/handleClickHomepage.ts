@@ -15,6 +15,5 @@ export function handleClickHomepage(
   setCurrentPage(1);
   setFilteredCountries(null);
   countries && resetPageNumbers(countries, setPageNumbers);
-  countries &&
-    setCountriesByPage("", countries, currentPage, setCurrentCountries);
+  countries && setCountriesByPage(countries, currentPage, setCurrentCountries);
 }

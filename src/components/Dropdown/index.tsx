@@ -3,10 +3,10 @@ import classNames from "classnames";
 import { ArrowDown } from "../../assets/icons/ArrowDown";
 import { CloseIcon } from "../../assets/icons/CloseIcon";
 import { useAppContext } from "../../context/appContext";
-import { getCountriesByRegion } from "../../services/getCountriesByRegion";
 import "./index.scss";
 import { resetPageNumbers } from "../../functions/resetPageNumbers";
 import { setCountriesByPage } from "../../functions/setCountriesByPage";
+import { getCountriesByRegion } from "../../services/countries";
 
 export const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);

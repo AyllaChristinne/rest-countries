@@ -1,11 +1,11 @@
 import { useRef } from "react";
 import { SearchIcon } from "../../assets/icons/SearchIcon";
-import { getCountryByName } from "../../services/getCountryByName";
 import { useAppContext } from "../../context/appContext";
 import { resetPageNumbers } from "../../functions/resetPageNumbers";
 import { setCountriesByPage } from "../../functions/setCountriesByPage";
 import { Dropdown } from "../Dropdown";
 import "./index.scss";
+import { getCountryByName } from "../../services/countries";
 
 export default function SortOptions() {
   const timer = useRef<NodeJS.Timeout | null>(null);

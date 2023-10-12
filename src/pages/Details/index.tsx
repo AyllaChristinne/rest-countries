@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getCountryByFullName } from "../../services/countries";
 import BorderButton from "../../components/BorderButton";
 import { CountryType } from "../../types";
 import { formatPopulation } from "../../functions/formatPopulation";
@@ -10,7 +11,6 @@ import { BackIcon } from "../../assets/icons/BackIcon";
 import Container from "../../components/Container";
 import { useAppContext } from "../../context/appContext";
 import { NotFound } from "../../components/NotFound";
-import { getCountryByFullName } from "../../services/getCountryByFullName";
 import "./index.scss";
 
 export default function Details() {

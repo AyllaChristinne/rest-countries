@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { LoadingOverlay } from "../LoadingOverlay";
-import { getBorders } from "../../services/getBorders";
 import "./index.scss";
 import { CountryType } from "../../types";
 import { useAppContext } from "../../context/appContext";
+import { getBorders } from "../../services/countries";
 
 type BorderType = {
   borderCodes: string[];

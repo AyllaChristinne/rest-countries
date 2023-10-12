@@ -35,22 +35,12 @@ export const PaginationBar = ({
     setIsFadeOut(true);
     if (filteredCountries) {
       setTimeout(() => {
-        setCountriesByPage(
-          "paginationBar",
-          filteredCountries,
-          currentPage,
-          setCurrentCountries
-        );
+        setCountriesByPage(filteredCountries, currentPage, setCurrentCountries);
         setIsFadeOut(false);
       }, 300);
     } else if (countries) {
       setTimeout(() => {
-        setCountriesByPage(
-          "paginationBar",
-          countries,
-          currentPage,
-          setCurrentCountries
-        );
+        setCountriesByPage(countries, currentPage, setCurrentCountries);
         setIsFadeOut(false);
       }, 300);
     }
