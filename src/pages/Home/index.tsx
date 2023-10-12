@@ -61,32 +61,19 @@ function Home() {
           <div
             className={`countries-cards ${isFadeOut ? "fade-out" : "fade-in"}`}
           >
-            {filteredCountries
-              ? filteredCountries.map((country: CountryType) => {
-                  return (
-                    <CountryCard
-                      key={country.name}
-                      flag={country.flag}
-                      name={country.name}
-                      pop={country.population}
-                      region={country.region}
-                      capital={country.capital}
-                    />
-                  );
-                })
-              : currentCountries &&
-                currentCountries.map((country: CountryType) => {
-                  return (
-                    <CountryCard
-                      key={country.name}
-                      flag={country.flag}
-                      name={country.name}
-                      pop={country.population}
-                      region={country.region}
-                      capital={country.capital}
-                    />
-                  );
-                })}
+            {currentCountries &&
+              currentCountries.map((country: CountryType) => {
+                return (
+                  <CountryCard
+                    key={country.name}
+                    flag={country.flag}
+                    name={country.name}
+                    pop={country.population}
+                    region={country.region}
+                    capital={country.capital}
+                  />
+                );
+              })}
           </div>
           {pageNumbers.length > 1 && (
             <PaginationBar setIsFadeOut={setIsFadeOut} scrollToTop />

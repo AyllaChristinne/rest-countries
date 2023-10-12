@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SearchIcon } from "../../assets/icons/SearchIcon";
 import { useAppContext } from "../../context/appContext";
 import { resetPageNumbers } from "../../functions/resetPageNumbers";
@@ -8,6 +8,8 @@ import "./index.scss";
 import { getCountryByName } from "../../services/countries";
 
 export default function SortOptions() {
+  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+  const [search, setSearch] = useState<string>("");
   const timer = useRef<NodeJS.Timeout | null>(null);
   const {
     countries,
@@ -36,6 +38,7 @@ export default function SortOptions() {
     timer.current && clearTimeout(timer.current);
 
     timer.current = setTimeout(async () => {
+      setSelectedRegion(null);
       setIsLoading(true);
       if (search.trim() !== "") {
         await debouncedInputSearch(search);
@@ -58,6 +61,10 @@ export default function SortOptions() {
     }, 1000);
   };
 
+  useEffect(() => {
+    if (selectedRegion) setSearch("");
+  }, [selectedRegion]);
+
   return (
     <div className="sortOptions_container">
       <div className="search_container">
@@ -68,13 +75,18 @@ export default function SortOptions() {
           name="search"
           placeholder="Search for a country..."
           autoComplete="off"
+          value={search}
           onChange={(e) => {
+            setSearch(e.target.value);
             handleSearch(e.target.value);
           }}
         />
       </div>
 
-      <Dropdown />
+      <Dropdown
+        selectedRegion={selectedRegion}
+        setSelectedRegion={setSelectedRegion}
+      />
     </div>
   );
 }

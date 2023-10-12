@@ -8,9 +8,16 @@ import { resetPageNumbers } from "../../functions/resetPageNumbers";
 import { setCountriesByPage } from "../../functions/setCountriesByPage";
 import { getCountriesByRegion } from "../../services/countries";
 
-export const Dropdown = () => {
+type DropdownPropsType = {
+  selectedRegion: string | null;
+  setSelectedRegion: React.Dispatch<React.SetStateAction<string | null>>;
+};
+
+export const Dropdown = ({
+  selectedRegion,
+  setSelectedRegion,
+}: DropdownPropsType) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
   const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
   const {
     countries,
@@ -30,9 +37,9 @@ export const Dropdown = () => {
     setIsLoading(true);
     setSelectedRegion(null);
     setFilteredCountries(null);
+    countries && resetPageNumbers(countries, setPageNumbers);
     countries &&
       setCountriesByPage(countries, currentPage, setCurrentCountries);
-    countries && resetPageNumbers(countries, setPageNumbers);
     setIsLoading(false);
   };
 
