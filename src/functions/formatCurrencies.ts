@@ -1,6 +1,6 @@
 import { CurrenciesType } from "../types";
 
-export const getCurrencies = (currencies: Array<CurrenciesType>) => {
+export const formatCurrencies = (currencies: Array<CurrenciesType>) => {
   let formattedCur = "";
 
   currencies.forEach((currency, index) => {

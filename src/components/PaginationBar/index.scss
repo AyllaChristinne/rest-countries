@@ -20,7 +20,7 @@
   user-select: none;
 
   &:hover {
-    background-color: #f1f1f3;
+    background-color: var(--color-hover);
     cursor: pointer;
   }
 

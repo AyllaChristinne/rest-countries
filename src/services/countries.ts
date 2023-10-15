@@ -45,7 +45,6 @@ export async function getCountryByFullName(
 export async function getCountryByName(
   name: string
 ): Promise<CustomResponseType> {
-  console.log("====>", name);
   return await axios(`${API_URL}/name/${name}`)
     .then((response) => {
       return { success: true as const, data: response.data };

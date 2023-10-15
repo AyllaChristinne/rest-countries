@@ -17,8 +17,6 @@
 .dropdown_opener {
   height: 56px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.04), 0 0 6px rgba(0, 0, 0, 0.02);
-  font-size: 14px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,6 +29,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 14px;
 }
 
 .dropdown_openerClear {
@@ -67,7 +66,6 @@
 }
 
 .dropdown_menu {
-  padding: var(--space-xs);
   position: absolute;
   top: 64px;
   display: flex;
@@ -103,13 +101,14 @@
   text-align: start;
   cursor: pointer;
   width: 100%;
+  font-size: 14px;
 
   &:hover {
-    background-color: #f2f2f2; // cinzinha
+    background-color: var(--color-hover);
   }
 
   &:active {
-    background-color: #e2e2e2; // cinza
+    background-color: var(--color-active);
   }
 }
 

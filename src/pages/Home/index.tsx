@@ -59,7 +59,9 @@ function Home() {
             <PaginationBar setIsFadeOut={setIsFadeOut} />
           )}
           <div
-            className={`countries-cards ${isFadeOut ? "fade-out" : "fade-in"}`}
+            className={`countries_cards ${
+              isFadeOut ? "fade__out" : "fade__in"
+            }`}
           >
             {currentCountries &&
               currentCountries.map((country: CountryType) => {

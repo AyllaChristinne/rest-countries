@@ -1,14 +1,14 @@
 @import "../../styles/mixins.scss";
 
-.fade-in {
+.fade__in {
   animation: fadeIn 0.3s ease-in;
 }
 
-.fade-out {
+.fade__out {
   animation: fadeOut 0.3s ease-in;
 }
 
-.countries-cards {
+.countries_cards {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -19,14 +19,14 @@
 }
 
 @include media("SM") {
-  .countries-cards {
+  .countries_cards {
     padding: 0;
   }
 }
 
 @include media("XL") {
-  .countries-cards {
-    gap: 50px;
+  .countries_cards {
+    gap: 55px;
   }
 }
 

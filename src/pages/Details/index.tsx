@@ -4,8 +4,8 @@ import { getCountryByFullName } from "../../services/countries";
 import BorderButton from "../../components/BorderButton";
 import { CountryType } from "../../types";
 import { formatPopulation } from "../../functions/formatPopulation";
-import { getCurrencies } from "../../functions/getCurrencies";
-import { getLanguages } from "../../functions/getLanguages";
+import { formatCurrencies } from "../../functions/formatCurrencies";
+import { formatLanguages } from "../../functions/formatLanguages";
 import { LoadingOverlay } from "../../components/LoadingOverlay";
 import { BackIcon } from "../../assets/icons/BackIcon";
 import Container from "../../components/Container";
@@ -14,7 +14,7 @@ import { NotFound } from "../../components/NotFound";
 import "./index.scss";
 
 export default function Details() {
-  const [country, setCountry] = useState<Array<CountryType>>();
+  const [country, setCountry] = useState<CountryType>();
   const navigate = useNavigate();
   const { isError, setIsError, isLoading, setIsLoading } = useAppContext();
 
@@ -24,7 +24,7 @@ export default function Details() {
     );
 
     if (response.success) {
-      setCountry(response.data);
+      setCountry(response.data[0]);
       setIsError(false);
     } else {
       setIsError(true);
@@ -49,6 +49,8 @@ export default function Details() {
         type="button"
         onClick={() => navigate(-1)}
         className="details_backButton"
+        aria-label="Go back"
+        role="button"
       >
         <BackIcon classNames="details_backIcon" />
         Back
@@ -62,67 +64,63 @@ export default function Details() {
         country && (
           <div className="details_country">
             <img
-              src={country[0].flag}
-              alt={`Bandeira de ${country[0].name}`}
-              aria-label={`Bandeira de ${country[0].name}`}
+              src={country.flag}
+              alt={`Bandeira de ${country.name}`}
+              aria-label={`Bandeira de ${country.name}`}
               className="details_countryImg"
             />
             <div className="details_countryInfos">
-              <h1 className="details_countryName">{country[0].name}</h1>
+              <h1 className="details_countryName">{country.name}</h1>
 
               <div className="details_countryInfo1">
                 <p className="details_countryText__bold">
                   Native Name:{" "}
                   <span className="details_countryText">
-                    {country[0].nativeName}
+                    {country.nativeName}
                   </span>
                 </p>
                 <p className="details_countryText__bold">
                   Population:{" "}
                   <span className="details_countryText">
-                    {formatPopulation(country[0].population)}
+                    {formatPopulation(country.population)}
                   </span>
                 </p>
                 <p className="details_countryText__bold">
                   Region:{" "}
-                  <span className="details_countryText">
-                    {country[0].region}
-                  </span>
+                  <span className="details_countryText">{country.region}</span>
                 </p>
                 <p className="details_countryText__bold">
                   Sub Region:{" "}
                   <span className="details_countryText">
-                    {country[0].subregion}
+                    {country.subregion}
                   </span>
                 </p>
                 <p className="details_countryText__bold">
                   Capital:{" "}
-                  <span className="details_countryText">
-                    {country[0].capital}
-                  </span>
+                  <span className="details_countryText">{country.capital}</span>
                 </p>
               </div>
               <div className="details_countryInfo2">
                 <p className="details_countryText__bold">
                   Top Level Domain:{" "}
                   <span className="details_countryText">
-                    {country[0].topLevelDomain}
+                    {country.topLevelDomain}
                   </span>
                 </p>
                 <p className="details_countryText__bold">
                   Currencies:{" "}
                   <span className="details_countryText">
-                    {getCurrencies(country[0].currencies)}
+                    {formatCurrencies(country.currencies)}
                   </span>
                 </p>
                 <p className="details_countryText__bold">
                   Languages:{" "}
                   <span className="details_countryText">
-                    {getLanguages(country[0].languages)}
+                    {formatLanguages(country.languages)}
                   </span>
                 </p>
               </div>
-              <BorderButton borderCodes={country[0].borders} />
+              <BorderButton borderCodes={country.borders} />
             </div>
           </div>
         )
