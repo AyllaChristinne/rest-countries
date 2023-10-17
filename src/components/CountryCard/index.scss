@@ -2,16 +2,22 @@
 
 .card {
   background: var(--color-elements);
-  border-radius: 8px;
+  border-radius: $size-xs;
   overflow: hidden;
   width: 320px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 6px 8px 0 rgba(0, 0, 0, 0.08);
   transition: all 0.2s ease-in-out;
+  outline: none;
 
   &:hover {
     transform: translateY(-6px);
     box-shadow: 1px 2px 6px 1px rgba(0, 0, 0, 0.1),
       2px 12px 16px 2px rgba(0, 0, 0, 0.08);
+  }
+
+  &:focus-visible {
+    transition: none;
+    @include focusOutline;
   }
 }
 

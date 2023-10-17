@@ -15,8 +15,8 @@ import "./index.scss";
 
 export default function Details() {
   const [country, setCountry] = useState<CountryType>();
-  const navigate = useNavigate();
   const { isError, setIsError, isLoading, setIsLoading } = useAppContext();
+  const navigate = useNavigate();
 
   const getCountryInfo = useCallback(async () => {
     const response = await getCountryByFullName(
@@ -50,7 +50,6 @@ export default function Details() {
         onClick={() => navigate(-1)}
         className="details_backButton"
         aria-label="Go back"
-        role="button"
       >
         <BackIcon classNames="details_backIcon" />
         Back

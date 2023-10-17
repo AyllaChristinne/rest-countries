@@ -12,6 +12,12 @@
   display: flex;
   align-items: center;
   gap: $size-xl;
+
+  &:focus-visible,
+  &:focus-within {
+    @include focusOutline;
+    border-radius: $size-xs;
+  }
 }
 
 .search_icon {
@@ -27,6 +33,10 @@
   height: 100%;
   font-size: 14px;
   color: var(--color-input);
+
+  &::placeholder {
+    color: var(--color-input);
+  }
 }
 
 .search_container {

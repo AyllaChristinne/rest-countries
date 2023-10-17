@@ -28,6 +28,10 @@
     color: var(--color-pagination--active);
     font-weight: bold;
   }
+
+  &:focus-visible {
+    @include focusBoxShadow;
+  }
 }
 
 .pagination_buttonIcon {

@@ -40,6 +40,7 @@ export default function Navbar() {
         </Link>
         <button
           type="button"
+          aria-label="Switch color theme"
           value={theme}
           className="navbar_themeBtn"
           onClick={() =>

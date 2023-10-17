@@ -25,7 +25,6 @@ function Home() {
     pageNumbers,
     setPageNumbers,
     currentPage,
-    filteredCountries,
   } = useAppContext();
 
   const getCountries = async () => {

@@ -20,6 +20,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &:focus-visible {
+    @include focusOutline;
+    border-radius: $size-xs;
+  }
 }
 
 .dropdown_openerButton {
@@ -109,6 +114,13 @@
 
   &:active {
     background-color: var(--color-active);
+  }
+
+  &:focus-visible,
+  &[aria-selected="true"] {
+    @include focusBoxShadow;
+    background-color: var(--color-hover);
+    border-radius: $size-xs;
   }
 }
 

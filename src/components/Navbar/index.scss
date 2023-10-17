@@ -10,7 +10,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 .navbar_content {
@@ -28,6 +28,15 @@
   font-size: 16px;
   font-weight: 800;
   cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    @include focusOutline;
+    border-radius: $size-xxs;
+  }
 }
 
 .navbar_themeBtn {
@@ -42,6 +51,11 @@
 
   &:hover {
     text-decoration: underline var(--color-text);
+  }
+
+  &:focus-visible {
+    @include focusOutline;
+    border-radius: $size-xxs;
   }
 }
 

@@ -78,6 +78,7 @@ export const PaginationBar = ({
           handleClickArrow("left");
         }}
         disabled={isFirstPage}
+        tabIndex={isFirstPage ? -1 : 0}
       >
         <ArrowLeftIcon classNames="pagination_buttonIcon" />
       </button>
@@ -102,6 +103,7 @@ export const PaginationBar = ({
           handleClickArrow("right");
         }}
         disabled={isLastPage}
+        tabIndex={isLastPage ? -1 : 0}
       >
         <ArrowRightIcon classNames="pagination_buttonIcon" />
       </button>
