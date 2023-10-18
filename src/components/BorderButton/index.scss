@@ -51,6 +51,16 @@
   font-weight: 300;
 }
 
+.bordersLoading_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bordersLoading_icon {
+  width: 24px;
+}
+
 @include media("SM") {
   .borders_button {
     min-width: 100px;

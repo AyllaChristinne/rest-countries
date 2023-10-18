@@ -14,8 +14,8 @@ import { NotFound } from "../../components/NotFound";
 import "./index.scss";
 
 export default function Details() {
-  const [country, setCountry] = useState<CountryType>();
-  const { isError, setIsError, isLoading, setIsLoading } = useAppContext();
+  const [country, setCountry] = useState<CountryType | null>(null);
+  const { isError, setIsError, isLoading } = useAppContext();
   const navigate = useNavigate();
 
   const getCountryInfo = useCallback(async () => {
@@ -28,20 +28,13 @@ export default function Details() {
       setIsError(false);
     } else {
       setIsError(true);
+      setCountry(null);
     }
-    setIsLoading(false);
   }, []);
 
   useEffect(() => {
-    setIsLoading(true);
     getCountryInfo();
-  }, []);
-
-  useEffect(() => {
-    if (country !== undefined) {
-      setIsLoading(false);
-    }
-  }, [country]);
+  }, [location.pathname]);
 
   return (
     <Container>
