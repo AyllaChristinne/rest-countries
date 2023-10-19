@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import classNames from "classnames";
-import { ArrowDown } from "../../assets/icons/ArrowDown";
-import { CloseIcon } from "../../assets/icons/CloseIcon";
 import { useAppContext } from "../../context/appContext";
 import { resetPageNumbers } from "../../functions/resetPageNumbers";
 import { setCountriesByPage } from "../../functions/setCountriesByPage";
 import { getCountriesByRegion } from "../../services/countries";
 import { handleKeyDown } from "./handleKeyDown";
+import { ArrowDown } from "../icons/ArrowDown";
+import { CloseIcon } from "../icons/CloseIcon";
 import "./index.scss";
 
 type DropdownPropsType = {
@@ -29,6 +29,7 @@ export const Dropdown = ({
     setIsLoading,
     setFilteredCountries,
     setIsError,
+    setCurrentPage,
     setPageNumbers,
   } = useAppContext();
 
@@ -45,6 +46,7 @@ export const Dropdown = ({
 
   const clearRegion = () => {
     setIsLoading(true);
+    setCurrentPage(1);
     setSelectedRegion(null);
     setFilteredCountries(null);
     countries && resetPageNumbers(countries, setPageNumbers);
@@ -57,6 +59,7 @@ export const Dropdown = ({
     setIsOpen(false);
     setIsLoading(true);
     setSelectedRegion(region);
+    setCurrentPage(1);
 
     if (region) {
       const response = await getCountriesByRegion(region);

@@ -1,10 +1,10 @@
-import Home from "./pages/Home";
+import Home from "./pages/home";
 import { BrowserRouter, Route } from "react-router-dom";
 import { Routes } from "react-router";
-import Details from "./pages/Details";
-import Navbar from "./components/Navbar";
+import Details from "./pages/details";
+import Navbar from "./components/navbar";
 import "./index.scss";
-import { NotFound } from "./components/NotFound";
+import { NotFound } from "./components/notFound";
 
 function App() {
   return (

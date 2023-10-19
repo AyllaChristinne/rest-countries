@@ -1,18 +1,18 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getCountryByFullName } from "../../services/countries";
-import BorderButton from "../../components/BorderButton";
+import { useAppContext } from "../../context/appContext";
 import { CountryType } from "../../types";
+import { getCountryByFullName } from "../../services/countries";
 import { formatPopulation } from "../../functions/formatPopulation";
 import { formatCurrencies } from "../../functions/formatCurrencies";
 import { formatLanguages } from "../../functions/formatLanguages";
-import { LoadingOverlay } from "../../components/LoadingOverlay";
-import { BackIcon } from "../../assets/icons/BackIcon";
-import Container from "../../components/Container";
-import { useAppContext } from "../../context/appContext";
-import { NotFound } from "../../components/NotFound";
-import "./index.scss";
+import BorderButton from "../../components/borderButton";
+import { LoadingOverlay } from "../../components/loadingOverlay";
+import Container from "../../components/container";
+import { NotFound } from "../../components/notFound";
 import { Attribution } from "../../components/attribution";
+import { BackIcon } from "../../components/icons/BackIcon";
+import "./index.scss";
 
 export default function Details() {
   const [country, setCountry] = useState<CountryType | null>(null);

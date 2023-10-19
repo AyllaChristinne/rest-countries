@@ -1,16 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { SearchIcon } from "../../assets/icons/SearchIcon";
 import { useAppContext } from "../../context/appContext";
 import { resetPageNumbers } from "../../functions/resetPageNumbers";
 import { setCountriesByPage } from "../../functions/setCountriesByPage";
-import { Dropdown } from "../Dropdown";
-import "./index.scss";
 import { getCountryByName } from "../../services/countries";
+import { SearchIcon } from "../icons/SearchIcon";
+import { Dropdown } from "../dropdown";
+import "./index.scss";
 
 export default function SortOptions() {
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
   const [search, setSearch] = useState<string>("");
   const timer = useRef<NodeJS.Timeout | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const {
     countries,
     currentPage,
@@ -20,6 +21,7 @@ export default function SortOptions() {
     setIsLoading,
     setCurrentCountries,
     setPageNumbers,
+    setCurrentPage,
     setFilteredCountries,
   } = useAppContext();
 
@@ -28,6 +30,7 @@ export default function SortOptions() {
     if (response.success) {
       setFilteredCountries(response.data);
       setIsError(false);
+      setCurrentPage(1);
     } else {
       setIsError(true);
       setFilteredCountries(null);
@@ -67,7 +70,12 @@ export default function SortOptions() {
 
   return (
     <div className="sortOptions_container">
-      <div className="search_container">
+      <div
+        className="search_container"
+        tabIndex={0}
+        role="searchbox"
+        onKeyDown={() => inputRef?.current?.focus()}
+      >
         <SearchIcon classNames="search_icon" />
         <input
           type="search"
@@ -76,10 +84,12 @@ export default function SortOptions() {
           placeholder="Search for a country..."
           autoComplete="off"
           value={search}
+          ref={inputRef}
           onChange={(e) => {
             setSearch(e.target.value);
             handleSearch(e.target.value);
           }}
+          tabIndex={-1}
         />
       </div>
 

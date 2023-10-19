@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import { getAllCountries } from "../../services/countries";
-import CountryCard from "../../components/CountryCard";
-import SortOptions from "../../components/SortOptions";
+import CountryCard from "../../components/countryCard";
+import SortOptions from "../../components/sortOptions";
 import { CountryType, CustomResponseType } from "../../types";
-import { LoadingOverlay } from "../../components/LoadingOverlay";
-import Container from "../../components/Container";
+import { LoadingOverlay } from "../../components/loadingOverlay";
+import Container from "../../components/container";
 import { useAppContext } from "../../context/appContext";
-import { NotFound } from "../../components/NotFound";
-import { PaginationBar } from "../../components/PaginationBar";
+import { NotFound } from "../../components/notFound";
+import { PaginationBar } from "../../components/paginationBar";
 import { resetPageNumbers } from "../../functions/resetPageNumbers";
 import { setCountriesByPage } from "../../functions/setCountriesByPage";
-import "./index.scss";
 import { Attribution } from "../../components/attribution";
+import "./index.scss";
 
 function Home() {
   const [isFadeOut, setIsFadeOut] = useState(false);

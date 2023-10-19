@@ -12,7 +12,7 @@ const CountryCard: React.FC<CountryCardProps> = ({
   capital,
 }) => {
   return (
-    <Link to={name} state={{ name: name }} className="card">
+    <Link to={name} className="card">
       <img src={flag} alt={`Flag of ${name}`} className="card_image" />
       <div className="card_info">
         <p className="card_title">{name}</p>

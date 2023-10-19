@@ -1,11 +1,11 @@
-import cn from "classnames";
-import { ArrowLeftIcon } from "../../assets/icons/ArrowLeft";
-import { ArrowRightIcon } from "../../assets/icons/ArrowRight";
-import { useAppContext } from "../../context/appContext";
-import "./index.scss";
-import { setCountriesByPage } from "../../functions/setCountriesByPage";
 import { useEffect } from "react";
+import cn from "classnames";
+import { useAppContext } from "../../context/appContext";
+import { setCountriesByPage } from "../../functions/setCountriesByPage";
 import { resetPageNumbers } from "../../functions/resetPageNumbers";
+import { ArrowLeftIcon } from "../icons/ArrowLeft";
+import { ArrowRightIcon } from "../icons/ArrowRight";
+import "./index.scss";
 
 type PaginationBarProps = {
   setIsFadeOut: React.Dispatch<React.SetStateAction<boolean>>;
