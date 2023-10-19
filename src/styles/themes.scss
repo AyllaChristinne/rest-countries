@@ -6,6 +6,7 @@
   --color-pagination--active: hsl(200, 19%, 18%);
   --color-hover: hsl(0, 0%, 95%);
   --color-active: hsl(0, 0%, 89%);
+  --color-not-found: hsl(191, 59%, 73%);
 }
 
 [data-theme="dark"] {
@@ -16,4 +17,5 @@
   --color-pagination--active: hsl(0, 0%, 100%);
   --color-hover: hsl(208, 29%, 19%);
   --color-active: hsl(211, 31%, 16%);
+  --color-not-found: hsl(209, 23%, 22%);
 }

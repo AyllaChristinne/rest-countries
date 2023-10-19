@@ -12,6 +12,7 @@ import Container from "../../components/Container";
 import { useAppContext } from "../../context/appContext";
 import { NotFound } from "../../components/NotFound";
 import "./index.scss";
+import { Attribution } from "../../components/attribution";
 
 export default function Details() {
   const [country, setCountry] = useState<CountryType | null>(null);
@@ -117,6 +118,7 @@ export default function Details() {
           </div>
         )
       )}
+      <Attribution classNames="details_attribution" />
     </Container>
   );
 }

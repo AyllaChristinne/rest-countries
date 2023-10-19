@@ -13,8 +13,7 @@
   align-items: center;
   gap: $size-xl;
 
-  &:focus-visible,
-  &:focus-within {
+  &:focus-visible {
     @include focusOutline;
     border-radius: $size-xs;
   }

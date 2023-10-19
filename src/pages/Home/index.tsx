@@ -11,6 +11,7 @@ import { PaginationBar } from "../../components/PaginationBar";
 import { resetPageNumbers } from "../../functions/resetPageNumbers";
 import { setCountriesByPage } from "../../functions/setCountriesByPage";
 import "./index.scss";
+import { Attribution } from "../../components/attribution";
 
 function Home() {
   const [isFadeOut, setIsFadeOut] = useState(false);
@@ -81,6 +82,7 @@ function Home() {
           )}
         </>
       )}
+      <Attribution classNames="home_attribution" />
     </Container>
   );
 }

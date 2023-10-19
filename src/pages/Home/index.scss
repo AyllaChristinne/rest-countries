@@ -13,9 +13,13 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 40px;
-  padding: 0 50px;
+  gap: $size-xxxl;
+  padding: 0 $size-g;
   margin-top: $size-xxl;
+}
+
+.home_attribution {
+  margin-top: $size-xxxl;
 }
 
 @include media("SM") {

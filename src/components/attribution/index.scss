@@ -1,0 +1,18 @@
+.attribution_container {
+  width: 100%;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.attribution_text {
+  font-size: 14px;
+}
+
+.attribution_link {
+  text-decoration: none;
+  font-weight: 700;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

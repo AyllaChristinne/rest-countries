@@ -59,6 +59,10 @@
   margin-bottom: $size-g;
 }
 
+.details_attribution {
+  margin-top: $size-xxxl;
+}
+
 @include media("SM") {
   .details_countryImg {
     aspect-ratio: 3/2;
@@ -101,6 +105,13 @@
   .details_countryInfo1,
   .details_countryInfo2 {
     margin: 0;
+  }
+
+  .details_attribution {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin-bottom: $size-md;
   }
 }
 

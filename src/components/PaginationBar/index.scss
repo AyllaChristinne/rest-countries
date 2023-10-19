@@ -6,9 +6,9 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  border-radius: 8px;
+  border-radius: $size-xs;
   overflow: hidden;
-  box-shadow: 1px 1px 1px 1px #00000010, 2px 2px 2px 2px #00000008;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.04), 0 0 6px rgba(0, 0, 0, 0.02);
 }
 
 .pagination_button {
@@ -16,7 +16,7 @@
   border: none;
   color: #b7b5c1;
   background-color: var(--color-elements);
-  transition: background-color 0.3s;
+  transition: background-color 0.8s;
   user-select: none;
 
   &:hover {
