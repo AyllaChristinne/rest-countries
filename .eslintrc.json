@@ -6,7 +6,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -14,7 +15,7 @@
     "sourceType": "module",
     "ecmaVersion": 10
   },
-  "plugins": ["@typescript-eslint", "react", "import", "unused-imports"],
+  "plugins": ["@typescript-eslint", "import", "unused-imports", "jsx-a11y"],
   "rules": {
     // Disabling ESLint rules as it can report incorrect errors (we're using TypeScript-ESLint plugin)
     "camelcase": "off",
