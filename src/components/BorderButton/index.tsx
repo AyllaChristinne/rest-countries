@@ -57,7 +57,7 @@ export default function BorderButton({ borderCodes }: BorderType) {
               key={country.alpha3Code}
               className="borders_button"
             >
-              {country.name}
+              {country.name.common}
             </Link>
           ))}
         </div>

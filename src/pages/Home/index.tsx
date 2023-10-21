@@ -67,9 +67,9 @@ function Home() {
               currentCountries.map((country: CountryType) => {
                 return (
                   <CountryCard
-                    key={country.name}
-                    flag={country.flag}
-                    name={country.name}
+                    key={country.name.common}
+                    flag={country.flags.svg}
+                    name={country.name.common}
                     pop={country.population}
                     region={country.region}
                     capital={country.capital}

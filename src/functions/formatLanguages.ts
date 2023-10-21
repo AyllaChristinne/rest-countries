@@ -1,15 +1,16 @@
 import { LanguagesType } from "../types";
 
 export const formatLanguages = (languages: Array<LanguagesType>) => {
-  let formattedLang = "";
+  let formattedLanguages = "";
+  const languagesArray = Object.values(languages);
 
-  languages.forEach((currency, index) => {
-    formattedLang += currency.name;
+  languagesArray.forEach((lang, index) => {
+    formattedLanguages += lang;
 
-    if (index < languages.length - 1) {
-      formattedLang += ", ";
+    if (index < languagesArray.length - 1) {
+      formattedLanguages += ", ";
     }
   });
 
-  return formattedLang;
+  return formattedLanguages;
 };

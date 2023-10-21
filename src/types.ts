@@ -18,31 +18,31 @@ export interface CountryCardProps {
   name: string;
   pop: number;
   region: string;
-  capital: string;
+  capital: Array<string>;
 }
 
-export interface CurrenciesType {
-  code: string;
-  name: string;
-  symbol: string;
-}
+export type CurrenciesType = Record<
+  string,
+  {
+    name: string;
+  }
+>;
 
-export interface LanguagesType {
-  iso639_1: string;
-  iso639_2: string;
-  name: string;
-  nativeName: string;
-}
+export type LanguagesType = Record<string, string>;
 
 export interface CountryType {
-  name: string;
-  flag: string;
+  name: {
+    common: string;
+  };
+  flags: {
+    svg: string;
+  };
   nativeName: string;
   population: number;
   region: string;
   subregion: string;
-  capital: string;
-  topLevelDomain: string;
+  capital: Array<string>;
+  timezones: Array<string>;
   currencies: Array<CurrenciesType>;
   languages: Array<LanguagesType>;
   borders: Array<string>;

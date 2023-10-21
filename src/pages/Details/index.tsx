@@ -12,6 +12,7 @@ import Container from "../../components/container";
 import { NotFound } from "../../components/notFound";
 import { Attribution } from "../../components/attribution";
 import { BackIcon } from "../../components/icons/BackIcon";
+import { formatCapitals } from "../../functions/formatCapitals";
 import "./index.scss";
 
 export default function Details() {
@@ -57,13 +58,13 @@ export default function Details() {
         country && (
           <div className="details_country">
             <img
-              src={country.flag}
-              alt={`Bandeira de ${country.name}`}
-              aria-label={`Bandeira de ${country.name}`}
+              src={country.flags.svg}
+              alt={`Bandeira de ${country.name.common}`}
+              aria-label={`Bandeira de ${country.name.common}`}
               className="details_countryImg"
             />
             <div className="details_countryInfos">
-              <h1 className="details_countryName">{country.name}</h1>
+              <h1 className="details_countryName">{country.name.common}</h1>
 
               <div className="details_countryInfo1">
                 <p className="details_countryText__bold">
@@ -90,14 +91,16 @@ export default function Details() {
                 </p>
                 <p className="details_countryText__bold">
                   Capital:{" "}
-                  <span className="details_countryText">{country.capital}</span>
+                  <span className="details_countryText">
+                    {formatCapitals(country.capital)}
+                  </span>
                 </p>
               </div>
               <div className="details_countryInfo2">
                 <p className="details_countryText__bold">
-                  Top Level Domain:{" "}
+                  Timezones:{" "}
                   <span className="details_countryText">
-                    {country.topLevelDomain}
+                    {country.timezones}
                   </span>
                 </p>
                 <p className="details_countryText__bold">

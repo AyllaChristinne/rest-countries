@@ -1,11 +1,11 @@
 import axios from "axios";
 import { CustomResponseType } from "../types";
 
-const API_URL = "https://restcountries.com/v2";
+const API_URL = "https://restcountries.com/v3.1";
 
 export async function getAllCountries(): Promise<CustomResponseType> {
   return await axios(
-    `${API_URL}/all?fields=name,population,flag,region,capital`
+    `${API_URL}/all?fields=name,population,flags,region,capital`
   )
     .then((response) => {
       return { success: true as const, data: response.data };

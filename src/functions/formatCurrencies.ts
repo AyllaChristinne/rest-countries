@@ -1,15 +1,18 @@
 import { CurrenciesType } from "../types";
 
 export const formatCurrencies = (currencies: Array<CurrenciesType>) => {
-  let formattedCur = "";
+  let formattedCurrencies = "";
+  const currenciesArray = Object.values(currencies).map(
+    (currency) => currency.name
+  );
 
-  currencies.forEach((currency, index) => {
-    formattedCur += currency.name;
+  currenciesArray.forEach((lang, index) => {
+    formattedCurrencies += lang;
 
-    if (index < currencies.length - 1) {
-      formattedCur += ", ";
+    if (index < currenciesArray.length - 1) {
+      formattedCurrencies += ", ";
     }
   });
 
-  return formattedCur;
+  return formattedCurrencies;
 };
