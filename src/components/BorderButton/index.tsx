@@ -17,6 +17,7 @@ export default function BorderButton({ borderCodes }: BorderType) {
   const { setIsError } = useAppContext();
 
   async function fetchBorderCountries() {
+    setIsLoadingBorder(true);
     if (borderCodes) {
       const countries = await getBorders(borderCodes);
       setBorderCountries(countries);
@@ -28,12 +29,7 @@ export default function BorderButton({ borderCodes }: BorderType) {
   }
 
   useEffect(() => {
-    setIsLoadingBorder(true);
     fetchBorderCountries();
-
-    return () => {
-      setHasNoBorders(false);
-    };
   }, []);
 
   return (
@@ -53,8 +49,8 @@ export default function BorderButton({ borderCodes }: BorderType) {
         <div className="borders_buttons">
           {borderCountries.map((country: CountryType) => (
             <Link
-              to={`/${country.name}`}
-              key={country.alpha3Code}
+              to={`/${country.name.common}`}
+              key={country.cca3}
               className="borders_button"
             >
               {country.name.common}

@@ -10,7 +10,7 @@ export type CustomResponseType =
 
 export interface BorderCountryType {
   name: string;
-  alpha3Code: string;
+  cca3: string;
 }
 
 export interface CountryCardProps {
@@ -43,10 +43,10 @@ export interface CountryType {
   subregion: string;
   capital: Array<string>;
   timezones: Array<string>;
-  currencies: Array<CurrenciesType>;
-  languages: Array<LanguagesType>;
+  currencies: CurrenciesType;
+  languages: LanguagesType;
   borders: Array<string>;
-  alpha3Code: string;
+  cca3: string;
 }
 
 export type IconProps = {
