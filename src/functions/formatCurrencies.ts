@@ -1,6 +1,6 @@
 import { CurrenciesType } from "../types";
 
-export const formatCurrencies = (currencies: Array<CurrenciesType>) => {
+export const formatCurrencies = (currencies: CurrenciesType) => {
   let formattedCurrencies = "";
   const currenciesArray = Object.values(currencies).map(
     (currency) => currency.name

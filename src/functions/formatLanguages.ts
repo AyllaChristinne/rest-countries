@@ -1,6 +1,6 @@
 import { LanguagesType } from "../types";
 
-export const formatLanguages = (languages: Array<LanguagesType>) => {
+export const formatLanguages = (languages: LanguagesType) => {
   let formattedLanguages = "";
   const languagesArray = Object.values(languages);
 

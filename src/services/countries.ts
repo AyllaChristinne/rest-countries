@@ -1,7 +1,7 @@
 import axios from "axios";
 import { CustomResponseType } from "../types";
 
-const API_URL = "https://restcountries.com/v3.1";
+export const API_URL = "https://restcountries.com/v3.1";
 
 export async function getAllCountries(): Promise<CustomResponseType> {
   return await axios(

@@ -52,3 +52,24 @@ export interface CountryType {
 export type IconProps = {
   classNames?: string;
 };
+
+export interface AppContextType {
+  isError: boolean;
+  setIsError: (errorMessage: boolean) => void;
+  isLoading: boolean;
+  setIsLoading: (isLoading: boolean) => void;
+  theme: "light" | "dark";
+  setTheme: (theme: "light" | "dark") => void;
+  countries: Array<CountryType> | null;
+  setCountries: (data: Array<CountryType> | null) => void;
+  debouncedSearch: string;
+  setDebouncedSearch: (search: string) => void;
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
+  pageNumbers: Array<number>;
+  setPageNumbers: (pages: number[]) => void;
+  currentCountries: Array<CountryType> | null;
+  setCurrentCountries: (data: Array<CountryType> | null) => void;
+  filteredCountries: Array<CountryType> | null;
+  setFilteredCountries: (data: Array<CountryType> | null) => void;
+}

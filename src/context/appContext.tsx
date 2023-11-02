@@ -1,30 +1,10 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { CountryType } from "../types";
+import { AppContextType, CountryType } from "../types";
 
 interface IProps {
   children: React.ReactNode;
-}
-
-interface AppContextType {
-  isError: boolean;
-  setIsError: (errorMessage: boolean) => void;
-  isLoading: boolean;
-  setIsLoading: (isLoading: boolean) => void;
-  theme: "light" | "dark";
-  setTheme: (theme: "light" | "dark") => void;
-  countries: Array<CountryType> | null;
-  setCountries: (data: Array<CountryType> | null) => void;
-  debouncedSearch: string;
-  setDebouncedSearch: (search: string) => void;
-  currentPage: number;
-  setCurrentPage: (page: number) => void;
-  pageNumbers: Array<number>;
-  setPageNumbers: (pages: number[]) => void;
-  currentCountries: Array<CountryType> | null;
-  setCurrentCountries: (data: Array<CountryType> | null) => void;
-  filteredCountries: Array<CountryType> | null;
-  setFilteredCountries: (data: Array<CountryType> | null) => void;
+  initialValue?: AppContextType;
 }
 
 const initialContext: AppContextType = {
@@ -50,7 +30,7 @@ const initialContext: AppContextType = {
 
 const AppContext = createContext<AppContextType>(initialContext);
 
-export const AppProvider = ({ children }: IProps) => {
+export const AppProvider = ({ children, initialValue }: IProps) => {
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -79,26 +59,28 @@ export const AppProvider = ({ children }: IProps) => {
 
   return (
     <AppContext.Provider
-      value={{
-        isError,
-        setIsError,
-        isLoading,
-        setIsLoading,
-        theme,
-        setTheme,
-        countries,
-        setCountries,
-        debouncedSearch,
-        setDebouncedSearch,
-        currentPage,
-        setCurrentPage,
-        pageNumbers,
-        setPageNumbers,
-        currentCountries,
-        setCurrentCountries,
-        filteredCountries,
-        setFilteredCountries,
-      }}
+      value={
+        initialValue || {
+          isError,
+          setIsError,
+          isLoading,
+          setIsLoading,
+          theme,
+          setTheme,
+          countries,
+          setCountries,
+          debouncedSearch,
+          setDebouncedSearch,
+          currentPage,
+          setCurrentPage,
+          pageNumbers,
+          setPageNumbers,
+          currentCountries,
+          setCurrentCountries,
+          filteredCountries,
+          setFilteredCountries,
+        }
+      }
     >
       <div data-theme={theme}>{children}</div>
     </AppContext.Provider>

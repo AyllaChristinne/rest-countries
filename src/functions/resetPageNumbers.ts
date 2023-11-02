@@ -15,7 +15,8 @@ export const resetPageNumbers = (
     ) {
       pages.push(i);
     }
+    setPageNumbers(pages);
+  } else {
+    setPageNumbers([]);
   }
-
-  setPageNumbers(pages);
 };

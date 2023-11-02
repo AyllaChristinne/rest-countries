@@ -7,12 +7,14 @@ import { getBorders } from "../../services/countries";
 import "./index.scss";
 
 type BorderType = {
-  borderCodes: string[];
+  borderCodes: string[] | undefined;
 };
 
 export default function BorderButton({ borderCodes }: BorderType) {
   const [isLoadingBorders, setIsLoadingBorder] = useState<boolean>(true);
-  const [borderCountries, setBorderCountries] = useState([]);
+  const [borderCountries, setBorderCountries] = useState<Array<CountryType>>(
+    []
+  );
   const [hasNoBorders, setHasNoBorders] = useState<boolean>(false);
   const { setIsError } = useAppContext();
 
@@ -44,7 +46,9 @@ export default function BorderButton({ borderCodes }: BorderType) {
           />
         </div>
       ) : hasNoBorders ? (
-        <span className="borders__none">This country has no borders.</span>
+        <span className="borders__none" data-testid="no-borders-message">
+          This country has no borders.
+        </span>
       ) : (
         <div className="borders_buttons">
           {borderCountries.map((country: CountryType) => (
