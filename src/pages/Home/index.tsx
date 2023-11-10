@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { getAllCountries } from "../../services/countries";
+import { getAllCountries } from "../../services/getAllCountries";
 import CountryCard from "../../components/countryCard";
 import SortOptions from "../../components/sortOptions";
-import { CountryType, CustomResponseType } from "../../types";
+import { CountryType } from "../../types";
 import { LoadingOverlay } from "../../components/loadingOverlay";
 import Container from "../../components/container";
 import { useAppContext } from "../../context/appContext";
@@ -12,6 +12,7 @@ import { resetPageNumbers } from "../../functions/resetPageNumbers";
 import { setCountriesByPage } from "../../functions/setCountriesByPage";
 import { Attribution } from "../../components/attribution";
 import "./index.scss";
+import { CustomResponseType } from "../../services/types";
 
 function Home() {
   const [isFadeOut, setIsFadeOut] = useState(false);
@@ -49,9 +50,8 @@ function Home() {
   return (
     <Container>
       <SortOptions />
-      {isLoading ? (
-        <LoadingOverlay />
-      ) : isError ? (
+      {isLoading && <LoadingOverlay />}
+      {isError ? (
         <NotFound />
       ) : (
         <>
@@ -69,6 +69,9 @@ function Home() {
                   <CountryCard
                     key={country.name.common}
                     flag={country.flags.svg}
+                    altFlag={
+                      country.flags.alt || `Bandeira de ${country.name.common}`
+                    }
                     name={country.name.common}
                     pop={country.population}
                     region={country.region}

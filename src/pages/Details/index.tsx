@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../../context/appContext";
 import { CountryType } from "../../types";
-import { getCountryByFullName } from "../../services/countries";
+import { getCountryByFullName } from "../../services/getCountryByFullName";
 import { formatPopulation } from "../../functions/formatPopulation";
 import { formatCurrencies } from "../../functions/formatCurrencies";
 import { formatLanguages } from "../../functions/formatLanguages";
@@ -59,7 +59,7 @@ export default function Details() {
           <div className="details_country">
             <img
               src={country.flags.svg}
-              alt={`Bandeira de ${country.name.common}`}
+              alt={country.flags.alt || `Bandeira de ${country.name.common}`}
               aria-label={`Bandeira de ${country.name.common}`}
               className="details_countryImg"
             />

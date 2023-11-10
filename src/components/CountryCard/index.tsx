@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const CountryCard: React.FC<CountryCardProps> = ({
   flag,
+  altFlag,
   name,
   pop,
   region,
@@ -13,7 +14,7 @@ const CountryCard: React.FC<CountryCardProps> = ({
 }) => {
   return (
     <Link to={name} className="card">
-      <img src={flag} alt={`Flag of ${name}`} className="card_image" />
+      <img src={flag} alt={altFlag} className="card_image" />
       <div className="card_info">
         <p className="card_title">{name}</p>
         <p className="card_pop">
