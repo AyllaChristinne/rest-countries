@@ -1,13 +1,3 @@
-export type CustomResponseType =
-  | {
-      success: true;
-      data: Array<CountryType>;
-    }
-  | {
-      success: false;
-      error: string;
-    };
-
 export interface BorderCountryType {
   name: string;
   cca3: string;
@@ -19,6 +9,7 @@ export interface CountryCardProps {
   pop: number;
   region: string;
   capital: Array<string>;
+  altFlag: string;
 }
 
 export type CurrenciesType = Record<
@@ -36,6 +27,7 @@ export interface CountryType {
   };
   flags: {
     svg: string;
+    alt: string;
   };
   nativeName: string;
   population: number;

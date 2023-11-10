@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { useAppContext } from "../../context/appContext";
 import { resetPageNumbers } from "../../functions/resetPageNumbers";
 import { setCountriesByPage } from "../../functions/setCountriesByPage";
-import { getCountriesByRegion } from "../../services/countries";
+import { getCountriesByRegion } from "../../services/getCountriesByRegion";
 import { handleKeyDown } from "./handleKeyDown";
 import { ArrowDown } from "../icons/ArrowDown";
 import { CloseIcon } from "../icons/CloseIcon";
@@ -22,6 +22,7 @@ export const Dropdown = ({
   const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
+
   const {
     countries,
     currentPage,
@@ -116,18 +117,26 @@ export const Dropdown = ({
           }
         }}
       >
-        <button className="dropdown_openerButton" tabIndex={-1}>
+        <button
+          className="dropdown_openerButton"
+          tabIndex={-1}
+          data-testid="dropdown_openerButton"
+        >
           {selectedRegion ? (
-            <span>{selectedRegion}</span>
+            selectedRegion
           ) : (
             <>
-              <span>Filter by region</span>
+              Filter by region
               <ArrowDown classNames="dropdown_openerIcon" />
             </>
           )}
         </button>
         {selectedRegion && (
-          <button onClick={clearRegion} className="dropdown_openerClear">
+          <button
+            onClick={clearRegion}
+            className="dropdown_openerClear"
+            data-testid="clear_dropdown"
+          >
             <CloseIcon classNames="dropdown_openerClearIcon" />
           </button>
         )}
@@ -138,6 +147,7 @@ export const Dropdown = ({
           ["dropdown_menu__closed"]: !isOpen,
         })}
         aria-label="Menu dropdown para seleção de regiões"
+        data-testid="dropdown_menu"
         ref={menuRef}
       >
         <ul

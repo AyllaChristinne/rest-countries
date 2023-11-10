@@ -1,9 +1,9 @@
 import React from "react";
-import { act, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import { AppProvider } from "../../context/appContext";
-import Navbar from "../navbar";
+import Navbar from ".";
 import { contextValues } from "../../mocks/context";
 import { handleClickHomepage } from "../../functions/handleClickHomepage";
 
@@ -35,9 +35,7 @@ describe("Navbar Component", () => {
     );
 
     const themeButton = getByLabelText("Switch color theme");
-    act(() => {
-      userEvent.click(themeButton);
-    });
+    userEvent.click(themeButton);
     expect(contextValues.setTheme).toHaveBeenCalledWith("dark");
   });
 
@@ -52,9 +50,7 @@ describe("Navbar Component", () => {
 
     const whereInTheWorldLink = getByText("Where in the world?");
 
-    act(() => {
-      userEvent.click(whereInTheWorldLink);
-    });
+    userEvent.click(whereInTheWorldLink);
 
     expect(handleClickHomepage).toHaveBeenCalledTimes(1);
   });

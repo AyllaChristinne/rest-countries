@@ -1,7 +1,8 @@
-import CountryCard from "../countryCard";
-import { mockCountry } from "../../mocks/country";
-import { render } from "@testing-library/react";
+import React from "react";
 import { MemoryRouter } from "react-router-dom";
+import { render } from "@testing-library/react";
+import CountryCard from ".";
+import { mockCountry } from "../../mocks/country";
 
 test("CountryCard Component should render correctly", () => {
   const { getByText, getByRole } = render(

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Loading from "react-loading";
 import { CountryType } from "../../types";
 import { useAppContext } from "../../context/appContext";
-import { getBorders } from "../../services/countries";
+import { getBorders } from "../../services/getBorders";
 import "./index.scss";
 
 type BorderType = {
@@ -27,12 +27,12 @@ export default function BorderButton({ borderCodes }: BorderType) {
     } else {
       setHasNoBorders(true);
     }
-    setIsLoadingBorder(false);
+    /* setIsLoadingBorder(false); */
   }
 
   useEffect(() => {
     fetchBorderCountries();
-  }, []);
+  }, [borderCodes]);
 
   return (
     <div className="borders">
@@ -41,8 +41,9 @@ export default function BorderButton({ borderCodes }: BorderType) {
         <div className="bordersLoading_container">
           <Loading
             type="spin"
-            color="#111517"
-            className="bordersLoading_icon"
+            color="var(--color-pagination--active)"
+            width={24}
+            height={24}
           />
         </div>
       ) : hasNoBorders ? (
