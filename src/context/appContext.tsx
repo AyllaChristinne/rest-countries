@@ -45,17 +45,18 @@ export const AppProvider = ({ children, initialValue }: IProps) => {
 
   useEffect(() => {
     const { localStorage } = window;
-    const savedThemeLocal = localStorage.getItem("data-theme");
+    const savedThemeLocal = localStorage.getItem("rest-countries/theme");
 
-    if (savedThemeLocal === "light" || savedThemeLocal === "dark") {
+    console.log("savedtheme", savedThemeLocal);
+    console.log("theme", theme);
+
+    if (
+      savedThemeLocal &&
+      (savedThemeLocal === "light" || savedThemeLocal === "dark")
+    ) {
       setTheme(savedThemeLocal);
     }
   }, []);
-
-  useEffect(() => {
-    const { localStorage } = window;
-    localStorage.setItem("data-theme", theme);
-  }, [theme]);
 
   return (
     <AppContext.Provider

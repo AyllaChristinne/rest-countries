@@ -43,9 +43,15 @@ export default function Navbar() {
           aria-label="Switch color theme"
           value={theme}
           className="navbar_themeBtn"
-          onClick={() =>
-            theme === "light" ? setTheme("dark") : setTheme("light")
-          }
+          onClick={() => {
+            if (theme === "light") {
+              setTheme("dark");
+              localStorage.setItem("rest-countries/theme", "dark");
+            } else {
+              setTheme("light");
+              localStorage.setItem("rest-countries/theme", "light");
+            }
+          }}
         >
           {theme === "light" ? (
             <MoonIcon classNames="navbar_themeIcon" />
