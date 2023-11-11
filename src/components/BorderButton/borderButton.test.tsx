@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import BorderButton from "./index";
 import React from "react";
@@ -13,17 +13,16 @@ describe("BorderButton Component", () => {
       </MemoryRouter>
     );
 
-    expect(await findByText("Guinea")).toBeInTheDocument();
-    expect(await findByText("Liberia")).toBeInTheDocument();
+    await expect(await findByText("Guinea")).toBeInTheDocument();
+    await expect(await findByText("Liberia")).toBeInTheDocument();
   });
 
   it("should render correctly when country has no border", async () => {
-    render(
+    const { getByTestId } = render(
       <MemoryRouter>
         <BorderButton borderCodes={undefined} />
       </MemoryRouter>
     );
-
-    expect(await screen.getByTestId("no-borders-message")).toBeInTheDocument();
+    await expect(await getByTestId("no-borders-message")).toBeInTheDocument();
   });
 });

@@ -20,14 +20,15 @@ export default function BorderButton({ borderCodes }: BorderType) {
 
   async function fetchBorderCountries() {
     setIsLoadingBorder(true);
-    if (borderCodes) {
+    if (!borderCodes) {
+      setHasNoBorders(true);
+    } else {
       const countries = await getBorders(borderCodes);
       setBorderCountries(countries);
       setIsError(false);
-    } else {
-      setHasNoBorders(true);
     }
-    /* setIsLoadingBorder(false); */
+
+    setIsLoadingBorder(false);
   }
 
   useEffect(() => {

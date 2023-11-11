@@ -1,5 +1,5 @@
 import { handleClickHomepage } from "../handleClickHomepage";
-import { mockCountry } from "../../mocks/country";
+import { mockCountry } from "../../mocks/countries";
 
 describe("Function handleClickHomepage", () => {
   it("should reset states page numbers, error, current page and current countries", () => {

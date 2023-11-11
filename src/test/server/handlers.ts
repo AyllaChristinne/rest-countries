@@ -12,9 +12,14 @@ export const handlers = [
     return res(ctx.status(200), ctx.json(mockCountries.data));
   }),
 
-  rest.get(`${API_URL}/alpha`, (req, res, ctx) => {
+  rest.get(`${API_URL}/alpha/`, (req, res, ctx) => {
     const borders = req.url.searchParams.get("codes");
 
+    /* if (!borders) {
+      return res(ctx.status(404), ctx.json({ message: "Not Found" }));
+    } else {
+      return res(ctx.status(200), ctx.json(mockBorders.data));
+    } */
     if (borders === "GIN,LBR") {
       return res(ctx.status(200), ctx.json(mockBorders.data));
     } else {

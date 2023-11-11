@@ -2,7 +2,7 @@ import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { render } from "@testing-library/react";
 import CountryCard from ".";
-import { mockCountry } from "../../mocks/country";
+import { mockCountry } from "../../mocks/countries";
 
 test("CountryCard Component should render correctly", () => {
   const { getByText, getByRole } = render(
@@ -13,6 +13,7 @@ test("CountryCard Component should render correctly", () => {
         flag={mockCountry.flags.svg}
         pop={mockCountry.population}
         region={mockCountry.region}
+        altFlag={mockCountry.flags.alt}
       />
     </MemoryRouter>
   );

@@ -47,9 +47,6 @@ export const AppProvider = ({ children, initialValue }: IProps) => {
     const { localStorage } = window;
     const savedThemeLocal = localStorage.getItem("rest-countries/theme");
 
-    console.log("savedtheme", savedThemeLocal);
-    console.log("theme", theme);
-
     if (
       savedThemeLocal &&
       (savedThemeLocal === "light" || savedThemeLocal === "dark")

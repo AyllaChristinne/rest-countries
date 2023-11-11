@@ -1,5 +1,5 @@
 import { resetPageNumbers } from "../resetPageNumbers";
-import { mockCountry } from "../../mocks/country";
+import { mockCountry } from "../../mocks/countries";
 
 describe("Function resetPageNumbers", () => {
   it("should set empty page numbers when countries are null", () => {

@@ -1,6 +1,6 @@
 import { CountryType } from "../../types";
 import { setCountriesByPage } from "../setCountriesByPage";
-import { mockCountry } from "../../mocks/country";
+import { mockCountry } from "../../mocks/countries";
 
 describe("Function setCountriesByPage", () => {
   const mockCountries: CountryType[] = Array.from(
