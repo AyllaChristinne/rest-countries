@@ -71,7 +71,7 @@ export const PaginationBar = ({
   };
 
   return (
-    <div className="pagination_container">
+    <div className="pagination_container" data-testid="pagination_container">
       <button
         className="pagination_button pagination_button__arrow"
         onClick={() => {
@@ -79,6 +79,8 @@ export const PaginationBar = ({
         }}
         disabled={isFirstPage}
         tabIndex={isFirstPage ? -1 : 0}
+        name="left arrow"
+        aria-label="left arrow"
       >
         <ArrowLeftIcon classNames="pagination_buttonIcon" />
       </button>
@@ -92,6 +94,8 @@ export const PaginationBar = ({
             onClick={() => {
               handleClickNumber(number);
             }}
+            name={number.toString()}
+            aria-label={number.toString()}
           >
             {number}
           </button>
@@ -104,6 +108,8 @@ export const PaginationBar = ({
         }}
         disabled={isLastPage}
         tabIndex={isLastPage ? -1 : 0}
+        name="right arrow"
+        aria-label="right arrow"
       >
         <ArrowRightIcon classNames="pagination_buttonIcon" />
       </button>

@@ -16,7 +16,7 @@ export const NotFound = () => {
     countries,
   } = useAppContext();
   return (
-    <div className="notFound_container">
+    <div className="notFound_container" data-testid="notFound_container">
       <NotFoundImg classNames="notFound_image" />
       <div className="notFound_textContainer">
         <h1 className="notFound_text__big">Page not found!</h1>
