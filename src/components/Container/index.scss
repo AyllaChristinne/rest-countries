@@ -12,24 +12,28 @@
   width: 100%;
   margin: 0 auto;
   padding: $size-xxl;
+  padding-bottom: $size-md;
   box-sizing: border-box;
 }
 
 @include media("SM") {
   .grid {
     padding: $size-xxl;
+    padding-bottom: $size-md;
   }
 }
 
 @include media("MD") {
   .grid {
     padding: $size-xxxl;
+    padding-bottom: $size-md;
   }
 }
 
 @include media("LG") {
   .grid {
     padding: $size-xxxl;
+    padding-bottom: $size-md;
     width: 100%;
     max-width: 1288px;
   }
@@ -37,6 +41,6 @@
 
 @include media("XL") {
   .grid {
-    padding: $size-xxxl 0;
+    padding: $size-xxxl 0 $size-md;
   }
 }

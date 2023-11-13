@@ -37,23 +37,15 @@ export default function SortOptions() {
     }
   };
 
-  const handleSearch = (search: string) => {
+  const handleSearch = async (search: string) => {
     timer.current && clearTimeout(timer.current);
 
     timer.current = setTimeout(async () => {
       setSelectedRegion(null);
       setIsLoading(true);
+
       if (search.trim() !== "") {
         await debouncedInputSearch(search);
-
-        if (filteredCountries && !isError) {
-          resetPageNumbers(filteredCountries, setPageNumbers);
-          setCountriesByPage(
-            filteredCountries,
-            currentPage,
-            setCurrentCountries
-          );
-        }
       } else {
         setFilteredCountries(null);
         countries &&
@@ -63,6 +55,13 @@ export default function SortOptions() {
       setIsLoading(false);
     }, 1000);
   };
+
+  useEffect(() => {
+    if (filteredCountries && !isError) {
+      resetPageNumbers(filteredCountries, setPageNumbers);
+      setCountriesByPage(filteredCountries, currentPage, setCurrentCountries);
+    }
+  }, [filteredCountries]);
 
   useEffect(() => {
     if (selectedRegion) setSearch("");
