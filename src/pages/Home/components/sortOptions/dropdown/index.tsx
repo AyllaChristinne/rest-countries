@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import classNames from "classnames";
-import { useAppContext } from "../../context/appContext";
-import { resetPageNumbers } from "../../functions/resetPageNumbers";
-import { setCountriesByPage } from "../../functions/setCountriesByPage";
-import { getCountriesByRegion } from "../../services/getCountriesByRegion";
+import { useAppContext } from "../../../../../context/appContext";
+import { resetPageNumbers } from "../../../../../functions/resetPageNumbers";
+import { setCountriesByPage } from "../../../../../functions/setCountriesByPage";
+import { getCountriesByRegion } from "../../../../../services/getCountriesByRegion";
 import { handleKeyDown } from "./handleKeyDown";
-import { ArrowDown } from "../icons/ArrowDown";
-import { CloseIcon } from "../icons/CloseIcon";
+import { ArrowDown } from "../../../../../assets/icons/ArrowDown";
+import { CloseIcon } from "../../../../../assets/icons/CloseIcon";
 import "./index.scss";
 
 type DropdownPropsType = {

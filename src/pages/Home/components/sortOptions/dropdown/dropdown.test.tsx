@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Dropdown } from ".";
-import Container from "../container";
+import Container from "../../../../../components/container";
 
 describe("Dropdown Component", () => {
   const setSelectedRegion = jest.fn();

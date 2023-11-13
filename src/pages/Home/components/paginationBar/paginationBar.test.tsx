@@ -1,10 +1,10 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { AppProvider } from "../../context/appContext";
-import { mockCountry } from "../../mocks/countries";
+import { AppProvider } from "../../../../context/appContext";
+import { mockCountry } from "../../../../mocks/countries";
 import { PaginationBar } from ".";
-import { AppContextType } from "../../types";
+import { AppContextType } from "../../../../types";
 
 const mockContextValues: AppContextType = {
   isError: false,

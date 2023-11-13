@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Loading from "react-loading";
-import { CountryType } from "../../types";
-import { useAppContext } from "../../context/appContext";
-import { getBorders } from "../../services/getBorders";
+import { CountryType } from "../../../../types";
+import { useAppContext } from "../../../../context/appContext";
+import { getBorders } from "../../../../services/getBorders";
 import "./index.scss";
 
 type BorderType = {

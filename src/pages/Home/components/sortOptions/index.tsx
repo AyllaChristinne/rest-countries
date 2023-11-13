@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { useAppContext } from "../../context/appContext";
-import { resetPageNumbers } from "../../functions/resetPageNumbers";
-import { setCountriesByPage } from "../../functions/setCountriesByPage";
-import { getCountryByName } from "../../services/getCountryByName";
-import { SearchIcon } from "../icons/SearchIcon";
-import { Dropdown } from "../dropdown";
+import { useAppContext } from "../../../../context/appContext";
+import { resetPageNumbers } from "../../../../functions/resetPageNumbers";
+import { setCountriesByPage } from "../../../../functions/setCountriesByPage";
+import { getCountryByName } from "../../../../services/getCountryByName";
+import { SearchIcon } from "../../../../assets/icons/SearchIcon";
+import { Dropdown } from "./dropdown";
 import "./index.scss";
 
 export default function SortOptions() {

@@ -6,12 +6,12 @@ import { getCountryByFullName } from "../../services/getCountryByFullName";
 import { formatPopulation } from "../../functions/formatPopulation";
 import { formatCurrencies } from "../../functions/formatCurrencies";
 import { formatLanguages } from "../../functions/formatLanguages";
-import BorderButton from "../../components/borderButton";
+import BorderButton from "./components/borderButton";
 import { LoadingOverlay } from "../../components/loadingOverlay";
 import Container from "../../components/container";
 import { NotFound } from "../../components/notFound";
 import { Attribution } from "../../components/attribution";
-import { BackIcon } from "../../components/icons/BackIcon";
+import { BackIcon } from "../../assets/icons/BackIcon";
 import { formatCapitals } from "../../functions/formatCapitals";
 import "./index.scss";
 

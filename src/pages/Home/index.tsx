@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { getAllCountries } from "../../services/getAllCountries";
-import CountryCard from "../../components/countryCard";
-import SortOptions from "../../components/sortOptions";
+import CountryCard from "./components/countryCard";
+import SortOptions from "./components/sortOptions";
 import { CountryType } from "../../types";
 import { LoadingOverlay } from "../../components/loadingOverlay";
 import Container from "../../components/container";
 import { useAppContext } from "../../context/appContext";
 import { NotFound } from "../../components/notFound";
-import { PaginationBar } from "../../components/paginationBar";
+import { PaginationBar } from "./components/paginationBar";
 import { resetPageNumbers } from "../../functions/resetPageNumbers";
 import { setCountriesByPage } from "../../functions/setCountriesByPage";
 import { Attribution } from "../../components/attribution";

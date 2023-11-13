@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useAppContext } from "../../context/appContext";
 import { handleClickHomepage } from "../../functions/handleClickHomepage";
-import { MoonIcon } from "../icons/MoonIcon";
-import { MoonIconFilled } from "../icons/MoonIconFilled";
+import { MoonIcon } from "../../assets/icons/MoonIcon";
+import { MoonIconFilled } from "../../assets/icons/MoonIconFilled";
 import "./index.scss";
 
 export default function Navbar() {
