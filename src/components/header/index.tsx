@@ -5,7 +5,7 @@ import { MoonIcon } from "../../assets/icons/MoonIcon";
 import { MoonIconFilled } from "../../assets/icons/MoonIconFilled";
 import "./index.scss";
 
-export default function Navbar() {
+export default function Header() {
   const {
     theme,
     setTheme,
@@ -19,11 +19,11 @@ export default function Navbar() {
   } = useAppContext();
 
   return (
-    <nav className="navbar_container">
-      <div className="navbar_content">
+    <header className="header_container">
+      <div className="header_content">
         <Link
           to="/"
-          className="navbar_text"
+          className="header_text"
           onClick={() =>
             handleClickHomepage(
               setIsError,
@@ -42,7 +42,7 @@ export default function Navbar() {
           type="button"
           aria-label="Switch color theme"
           value={theme}
-          className="navbar_themeBtn"
+          className="header_themeBtn"
           onClick={() => {
             if (theme === "light") {
               setTheme("dark");
@@ -54,13 +54,18 @@ export default function Navbar() {
           }}
         >
           {theme === "light" ? (
-            <MoonIcon classNames="navbar_themeIcon" />
+            <>
+              <MoonIcon classNames="header_themeIcon" />
+              <span className="header_themeText">Dark Mode</span>
+            </>
           ) : (
-            <MoonIconFilled classNames="navbar_themeIcon" />
+            <>
+              <MoonIconFilled classNames="header_themeIcon" />
+              <span className="header_themeText">Light Mode</span>
+            </>
           )}
-          <span className="navbar_themeText">Dark Mode</span>
         </button>
       </div>
-    </nav>
+    </header>
   );
 }

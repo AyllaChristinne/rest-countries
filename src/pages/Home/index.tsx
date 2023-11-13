@@ -10,7 +10,7 @@ import { NotFound } from "../../components/notFound";
 import { PaginationBar } from "./components/paginationBar";
 import { resetPageNumbers } from "../../functions/resetPageNumbers";
 import { setCountriesByPage } from "../../functions/setCountriesByPage";
-import { Attribution } from "../../components/attribution";
+import { Attribution } from "../../components/footer";
 import "./index.scss";
 import { CustomResponseType } from "../../services/types";
 

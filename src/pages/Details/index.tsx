@@ -10,7 +10,7 @@ import BorderButton from "./components/borderButton";
 import { LoadingOverlay } from "../../components/loadingOverlay";
 import Container from "../../components/container";
 import { NotFound } from "../../components/notFound";
-import { Attribution } from "../../components/attribution";
+import { Attribution } from "../../components/footer";
 import { BackIcon } from "../../assets/icons/BackIcon";
 import { formatCapitals } from "../../functions/formatCapitals";
 import "./index.scss";

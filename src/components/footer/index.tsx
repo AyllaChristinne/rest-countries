@@ -7,7 +7,7 @@ type AttributionType = {
 
 export const Attribution = ({ classNames }: AttributionType) => {
   return (
-    <div
+    <footer
       className={cn("attribution_container", {
         [`${classNames}`]: classNames,
       })}
@@ -32,6 +32,6 @@ export const Attribution = ({ classNames }: AttributionType) => {
           Aylla Christinne
         </a>
       </span>
-    </div>
+    </footer>
   );
 };

@@ -1,7 +1,7 @@
 @import "../../styles/variables.scss";
 @import "../../styles/mixins.scss";
 
-.navbar_container {
+.header_container {
   width: 100%;
   height: 64px;
   box-sizing: border-box;
@@ -13,7 +13,7 @@
   z-index: 2;
 }
 
-.navbar_content {
+.header_content {
   width: 100%;
   height: 100%;
   display: flex;
@@ -24,7 +24,7 @@
   justify-content: space-between;
 }
 
-.navbar_text {
+.header_text {
   font-size: 16px;
   font-weight: 800;
   cursor: pointer;
@@ -39,7 +39,7 @@
   }
 }
 
-.navbar_themeBtn {
+.header_themeBtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,36 +59,36 @@
   }
 }
 
-.navbar_themeText {
+.header_themeText {
   font-weight: 600;
   font-size: 14px;
 }
 
-.navbar_themeIcon {
+.header_themeIcon {
   width: 20px;
   height: 20px;
 }
 
 @include media("SM") {
-  .navbar_content {
+  .header_content {
     padding: 0 $size-xl;
   }
 }
 
 @include media("MD") {
-  .navbar_content {
+  .header_content {
     padding: 0 $size-xxl;
   }
 }
 
 @include media("LG") {
-  .navbar_content {
+  .header_content {
     padding: 0 $size-xxl;
   }
 }
 
 @include media("XL") {
-  .navbar_content {
+  .header_content {
     padding: 0;
     max-width: 1280px;
   }

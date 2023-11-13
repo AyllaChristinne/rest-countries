@@ -11,7 +11,7 @@ jest.mock("../../functions/handleClickHomepage", () => ({
   handleClickHomepage: jest.fn(),
 }));
 
-describe("Navbar Component", () => {
+describe("Header Component", () => {
   it("should render correctly", () => {
     const { getByText, getByLabelText } = render(
       <AppProvider>
