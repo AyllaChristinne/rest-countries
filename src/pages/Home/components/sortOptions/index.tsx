@@ -47,6 +47,7 @@ export default function SortOptions() {
       if (search.trim() !== "") {
         await debouncedInputSearch(search);
       } else {
+        setIsError(false);
         setFilteredCountries(null);
         countries &&
           setCountriesByPage(countries, currentPage, setCurrentCountries);

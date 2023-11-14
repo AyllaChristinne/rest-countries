@@ -7,7 +7,7 @@ import { getBorders } from "../../../../services/getBorders";
 import "./index.scss";
 
 type BorderType = {
-  borderCodes: string[] | undefined;
+  borderCodes: string[] | [] | undefined;
 };
 
 export default function BorderButton({ borderCodes }: BorderType) {
@@ -20,7 +20,7 @@ export default function BorderButton({ borderCodes }: BorderType) {
 
   async function fetchBorderCountries() {
     setIsLoadingBorder(true);
-    if (!borderCodes) {
+    if (!borderCodes || borderCodes.length === 0) {
       setHasNoBorders(true);
     } else {
       const countries = await getBorders(borderCodes);
