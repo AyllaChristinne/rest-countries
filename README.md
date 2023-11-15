@@ -7,7 +7,9 @@ This is a solution to the [REST Countries API with color theme switcher challeng
   - [Table of contents](#table-of-contents)
   - [Overview](#overview)
     - [The challenge](#the-challenge)
-    - [Screenshot](#screenshot)
+    - [Screenshots](#screenshots)
+      - [Desktop](#desktop)
+      - [Mobile](#mobile)
   - [My process](#my-process)
     - [Built with](#built-with)
     - [What I learned](#what-i-learned)
@@ -27,11 +29,19 @@ Users should be able to:
 - Click through to the border countries on the detail page
 - Toggle the color scheme between light and dark mode
 
-### Screenshot
+### Screenshots
 
-![](./screenshot.jpg)
+#### Desktop
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+[![desktop-light.png](https://i.postimg.cc/xT2Nfv9b/desktop-light.png)](https://postimg.cc/7bKZXTGx)
+[![desktop-dark.png](https://i.postimg.cc/1ztqxysC/desktop-dark.png)](https://postimg.cc/75F608C0)
+[![desktop-details.png](https://i.postimg.cc/Bbx856B6/desktop-details.png)](https://postimg.cc/Lg862m7K)
+
+#### Mobile
+
+[![mobile-light.png](https://i.postimg.cc/nr8jQ77g/mobile-light.png)](https://postimg.cc/wyVTC1wQ)
+[![mobile-dark.png](https://i.postimg.cc/wvRRvFtD/mobile-dark.png)](https://postimg.cc/347xfXFw)
+[![mobile-details.png](https://i.postimg.cc/ZY3yz7zS/mobile-details.png)](https://postimg.cc/QV8MpqM4)
 
 ## My process
 
