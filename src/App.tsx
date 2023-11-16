@@ -11,8 +11,8 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/:country" element={<Details />} />
+        <Route path="/rest-countries" element={<Home />} />
+        <Route path="/rest-countries/:country" element={<Details />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

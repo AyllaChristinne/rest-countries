@@ -23,7 +23,7 @@ export const NotFound = () => {
         <p className="notFound_text">
           Don&apos;t worry. You can find plenty of other things on our{" "}
           <Link
-            to="/"
+            to="/rest-countries"
             className="notFound_text__link"
             onClick={() =>
               handleClickHomepage(

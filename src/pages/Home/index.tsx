@@ -13,6 +13,7 @@ import { setCountriesByPage } from "../../functions/setCountriesByPage";
 import { Attribution } from "../../components/footer";
 import "./index.scss";
 import { CustomResponseType } from "../../services/types";
+import cn from "classnames";
 
 function Home() {
   const [isFadeOut, setIsFadeOut] = useState(false);
@@ -22,6 +23,7 @@ function Home() {
     isLoading,
     setIsLoading,
     setCountries,
+    filteredCountries,
     currentCountries,
     setCurrentCountries,
     pageNumbers,
@@ -59,9 +61,11 @@ function Home() {
             <PaginationBar setIsFadeOut={setIsFadeOut} />
           )}
           <div
-            className={`countries_cards ${
-              isFadeOut ? "fade__out" : "fade__in"
-            }`}
+            className={cn("countries_cards", {
+              ["fade__in"]: isFadeOut,
+              ["fade__out"]: !isFadeOut,
+              ["countries_cards__result"]: filteredCountries,
+            })}
           >
             {currentCountries &&
               currentCountries.map((country: CountryType) => {

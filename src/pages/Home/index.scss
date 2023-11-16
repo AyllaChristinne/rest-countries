@@ -18,6 +18,9 @@
   margin-top: $size-xxl;
   min-height: 100vh;
 }
+.countries_cards__result {
+  min-height: unset;
+}
 
 .home_attribution {
   margin-top: $size-xxxl;

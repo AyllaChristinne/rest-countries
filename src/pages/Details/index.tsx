@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAppContext } from "../../context/appContext";
 import { CountryType } from "../../types";
 import { getCountryByFullName } from "../../services/getCountryByFullName";
@@ -19,24 +19,25 @@ export default function Details() {
   const [country, setCountry] = useState<CountryType | null>(null);
   const { isError, setIsError, isLoading } = useAppContext();
   const navigate = useNavigate();
+  const { country: countryName } = useParams();
 
-  const getCountryInfo = useCallback(async () => {
-    const response = await getCountryByFullName(
-      window.location.pathname.replace("/", "")
-    );
+  const getCountryInfo = async () => {
+    if (countryName) {
+      const response = await getCountryByFullName(countryName);
 
-    if (response.success) {
-      setCountry(response.data[0]);
-      setIsError(false);
-    } else {
-      setIsError(true);
-      setCountry(null);
+      if (response.success) {
+        setCountry(response.data[0]);
+        setIsError(false);
+      } else {
+        setIsError(true);
+        setCountry(null);
+      }
     }
-  }, []);
+  };
 
   useEffect(() => {
     getCountryInfo();
-  }, [location.pathname]);
+  }, [countryName]);
 
   return (
     <Container>

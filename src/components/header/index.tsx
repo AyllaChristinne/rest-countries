@@ -22,7 +22,7 @@ export default function Header() {
     <header className="header_container">
       <div className="header_content">
         <Link
-          to="/"
+          to="/rest-countries"
           className="header_text"
           onClick={() =>
             handleClickHomepage(

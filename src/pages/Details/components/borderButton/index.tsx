@@ -55,7 +55,7 @@ export default function BorderButton({ borderCodes }: BorderType) {
         <div className="borders_buttons">
           {borderCountries.map((country: CountryType) => (
             <Link
-              to={`/${country.name.common}`}
+              to={`/rest-countries/${country.name.common}`}
               key={country.cca3}
               className="borders_button"
             >
